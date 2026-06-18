@@ -1,5 +1,5 @@
 /* ============================================
-   INVITARTE — Script Principal
+   INVITARTE — Script Principal (Corregido)
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,18 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
 
-  // Scroll state
   const handleNavbarScroll = () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   };
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
   handleNavbarScroll();
 
-  // Hamburger toggle
   hamburger?.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
-    // Animate hamburger
     hamburger.querySelectorAll('span').forEach((s, i) => {
       s.style.transform = isOpen
         ? i === 0 ? 'rotate(45deg) translate(5px, 5px)'
@@ -38,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Close nav on link click
   navLinks?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
      2. SCROLL-TRIGGERED ANIMATIONS
      ========================================== */
   const animatedEls = document.querySelectorAll('[data-animate]');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -68,25 +63,171 @@ document.addEventListener('DOMContentLoaded', () => {
   animatedEls.forEach(el => observer.observe(el));
 
   /* ==========================================
-     3. GALLERY FILTERS
+     3. LIGHTBOX / VISOR DE IMÁGENES
      ========================================== */
-  const filterBtns  = document.querySelectorAll('.filter-btn');
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev  = document.getElementById('lightboxPrev');
+  const lightboxNext  = document.getElementById('lightboxNext');
+  const lightboxWA    = document.getElementById('lightboxWA');
+
+  let currentGalleryImages = [];
+  let currentImageIndex = 0;
+
+  function openLightbox(imgSrc, caption, category, designName) {
+    lightboxImg.src = imgSrc;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Configurar el botón de WhatsApp con la información de la imagen
+    const waText = encodeURIComponent(
+      `¡Hola! 👋 Me interesa este diseño:\n\n` +
+      `🎨 *${designName}*\n` +
+      `📂 *Categoría:* ${category}\n\n` +
+      `_Enviado desde el portafolio de InvitArte_`
+    );
+    lightboxWA.href = `https://wa.me/5219221224111?text=${waText}`;
+
+    // Buscar todas las imágenes visibles en la galería para navegación
+    updateCurrentGallery();
+  }
+
+  function updateCurrentGallery() {
+    const visibleCards = document.querySelectorAll('.gallery-card[style*="display:"]:not([style*="display: none"]), .gallery-card:not([style*="display: none"])');
+    // Si no hay filtros activos, tomar todas las cards visibles
+    const allVisible = Array.from(document.querySelectorAll('.gallery-card')).filter(card => {
+      return card.style.display !== 'none' && card.offsetParent !== null;
+    });
+    
+    currentGalleryImages = allVisible.map(card => {
+      const img = card.querySelector('img');
+      const title = card.querySelector('h4')?.textContent || '';
+      const cat = card.querySelector('.gallery-cat')?.textContent || '';
+      return {
+        src: img?.src || '',
+        caption: title,
+        category: cat,
+        designName: title,
+        card: card
+      };
+    }).filter(item => item.src);
+
+    currentImageIndex = currentGalleryImages.findIndex(item => item.src === lightboxImg.src);
+    if (currentImageIndex === -1) currentImageIndex = 0;
+  }
+
+  function navigateLightbox(direction) {
+    if (currentGalleryImages.length === 0) return;
+    currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
+    const item = currentGalleryImages[currentImageIndex];
+    lightboxImg.src = item.src;
+    lightboxCaption.textContent = item.caption;
+    
+    const waText = encodeURIComponent(
+      `¡Hola! 👋 Me interesa este diseño:\n\n` +
+      `🎨 *${item.designName}*\n` +
+      `📂 *Categoría:* ${item.category}\n\n` +
+      `_Enviado desde el portafolio de InvitArte_`
+    );
+    lightboxWA.href = `https://wa.me/5219221224111?text=${waText}`;
+  }
+
+  lightboxClose?.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  lightboxPrev?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(-1);
+  });
+
+  lightboxNext?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(1);
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  /* ==========================================
+     4. GALLERY CARD — click para abrir lightbox
+     ========================================== */
   const galleryCards = document.querySelectorAll('.gallery-card');
+
+  galleryCards.forEach(card => {
+    const imgWrap = card.querySelector('.gallery-img-wrap');
+    const img = card.querySelector('img');
+    const title = card.querySelector('h4')?.textContent || '';
+    const category = card.querySelector('.gallery-cat')?.textContent || '';
+
+    // Click en la imagen abre el lightbox
+    imgWrap?.addEventListener('click', (e) => {
+      // Si el clic fue en el overlay de WhatsApp, no abrir lightbox
+      if (e.target.closest('.gallery-overlay-wa')) {
+        // Abrir WhatsApp directamente
+        const waText = encodeURIComponent(
+          `¡Hola! 👋 Me interesa este diseño:\n\n` +
+          `🎨 *${title}*\n` +
+          `📂 *Categoría:* ${category}\n\n` +
+          `_Enviado desde el portafolio de InvitArte_`
+        );
+        window.open(`https://wa.me/5219221224111?text=${waText}`, '_blank');
+        e.stopPropagation();
+        return;
+      }
+      
+      if (img?.src) {
+        updateCurrentGallery();
+        openLightbox(img.src, title, category, title);
+      }
+    });
+
+    // El overlay de "Ver diseño" también abre lightbox
+    const verBtn = imgWrap?.querySelector('.gallery-overlay span:first-child');
+    verBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (img?.src) {
+        updateCurrentGallery();
+        openLightbox(img.src, title, category, title);
+      }
+    });
+  });
+
+  /* ==========================================
+     5. GALLERY FILTERS
+     ========================================== */
+  const filterBtns = document.querySelectorAll('.filter-btn');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
 
-      // Update active state
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Filter cards with animation
       galleryCards.forEach(card => {
         const match = filter === 'all' || card.dataset.category === filter;
         if (match) {
           card.style.display = '';
-          // Fade in
           card.style.opacity = '0';
           card.style.transform = 'translateY(16px)';
           requestAnimationFrame(() => {
@@ -106,10 +247,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================
-     4. TESTIMONIALS SLIDER
+     6. TESTIMONIALS SLIDER
      ========================================== */
   const track = document.getElementById('testimonialsTrack');
-  const dots  = document.querySelectorAll('.dot');
+  const dots  = document.querySelectorAll('.slider-dots .dot');
   let current = 0;
   let autoSlide;
 
@@ -122,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     current = Math.min(Math.max(idx, 0), max);
 
     const cardWidth = cards[0]?.offsetWidth || 0;
-    const gap = 24; // 1.5rem
+    const gap = 24;
     const offset = current * (cardWidth + gap);
     if (track) track.style.transform = `translateX(-${offset}px)`;
 
@@ -152,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startAutoSlide();
 
-  // Touch / swipe support
   let touchStartX = 0;
   track?.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
@@ -166,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // Re-calc on resize
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -174,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================
-     5. CONTACT FORM
+     7. CONTACT FORM
      ========================================== */
   const contactForm  = document.getElementById('contactForm');
   const formSuccess  = document.getElementById('formSuccess');
@@ -197,18 +336,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Formatear fecha legible
     let fechaTexto = 'Por confirmar';
     if (fecha) {
       const [y, m, d] = fecha.split('-');
       fechaTexto = `${d}/${m}/${y}`;
     }
 
-    // Mapear valores del select a texto legible
     const eventoMap = {
       xv: 'XV Años', boda: 'Boda', bautizo: 'Bautizo',
       cumple: 'Cumpleaños', comunion: 'Comunión',
-      confirmacion: 'Confirmación', otro: 'Otro'
+      confirmacion: 'Confirmación', graduacion: 'Graduación', otro: 'Otro'
     };
     const eventoTexto = eventoMap[evento] || evento;
 
@@ -216,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Abriendo WhatsApp...`;
 
-    // Construir mensaje de WhatsApp
     const waText = encodeURIComponent(
       `¡Hola! 👋 Me interesa una invitación digital.\n\n` +
       `📛 *Nombre:* ${name}\n` +
@@ -227,10 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     setTimeout(() => {
-      // Abrir WhatsApp
-      window.open(`https://wa.me/9221224111?text=${waText}`, '_blank');
-
-      // Reset form
+      window.open(`https://wa.me/5219221224111?text=${waText}`, '_blank');
       contactForm.reset();
       submitBtn.disabled = false;
       submitBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Enviar mensaje`;
@@ -241,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================
-     6. SMOOTH SCROLL for anchor links
+     8. SMOOTH SCROLL for anchor links
      ========================================== */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -256,19 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================
-     7. GALLERY CARD — open WhatsApp on click
-     ========================================== */
-  galleryCards.forEach(card => {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
-      const title = card.querySelector('h4')?.textContent || 'un diseño';
-      const text  = encodeURIComponent(`Hola! Me interesa el diseño: ${title}. ¿Me puedes dar más información?`);
-      window.open(`https://wa.me/9221224111?text=${text}`, '_blank');
-    });
-  });
-
-  /* ==========================================
-     8. WA FAB — pulse animation after 3s
+     9. WA FAB — pulse animation after 3s
      ========================================== */
   const waFab = document.querySelector('.wa-fab');
   setTimeout(() => {
@@ -276,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 3000);
 
   /* ==========================================
-     9. CATEGORY CARDS ripple effect
+     10. CATEGORY CARDS ripple effect
      ========================================== */
   document.querySelectorAll('.cat-card').forEach(card => {
     card.addEventListener('click', function(e) {
@@ -304,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hcDotBtns   = document.querySelectorAll('.hc-dot');
   const hcLabelText = document.getElementById('hcLabelText');
 
-  const hcLabels = ['Boda', 'XV Años', 'Bautizo', 'Cumpleaños', 'Comunión', 'Confirmación'];
+  const hcLabels = ['Boda', 'XV Años', 'Bautizo', 'Cumpleaños', 'Comunión', 'Confirmación', 'Graduación'];
 
   let hcCurrent  = 0;
   let hcTimer;
@@ -332,43 +453,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Click on carousel advances slide
   document.querySelector('.hero-carousel')?.addEventListener('click', () => {
     hcGoTo(hcCurrent + 1);
     hcResetAuto();
   });
 
-  // Pause on hover
   document.querySelector('.hero-carousel')?.addEventListener('mouseenter', () => clearInterval(hcTimer));
   document.querySelector('.hero-carousel')?.addEventListener('mouseleave', hcStartAuto);
 
   hcStartAuto();
-  const targetDate = new Date('2024-08-24T18:00:00');
-
-  const updateCountdown = () => {
-    const now  = new Date();
-    const diff = targetDate - now;
-    if (diff <= 0) return;
-
-    const days    = Math.floor(diff / (1000*60*60*24));
-    const hours   = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((diff % (1000*60)) / 1000);
-
-    const spans = document.querySelectorAll('.inv-timer-mini span');
-    if (spans[0]) spans[0].textContent = String(days).padStart(2,'0');
-    if (spans[1]) spans[1].textContent = String(hours).padStart(2,'0');
-    if (spans[2]) spans[2].textContent = String(minutes).padStart(2,'0');
-    if (spans[3]) spans[3].textContent = String(seconds).padStart(2,'0');
-  };
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
 });
 
 /* ==========================================
-   CSS: Ripple animation (injected)
+   CSS: Animations injected
    ========================================== */
 const style = document.createElement('style');
 style.textContent = `
@@ -405,3 +502,19 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+/* =========================================================
+   Mejora UX 2026 — cierre de menú con clic exterior
+   ========================================================= */
+document.addEventListener('click', (event) => {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  if (!nav || !btn || !nav.classList.contains('open')) return;
+  if (nav.contains(event.target) || btn.contains(event.target)) return;
+  nav.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.querySelectorAll('span').forEach(s => {
+    s.style.transform = '';
+    s.style.opacity = '';
+  });
+});

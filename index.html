@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InvitArte — Invitaciones Digitales Únicas</title>
+  <title>InvitArte</title>
 
   <!-- ── Favicon ── -->
   <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
 
   <!-- ── SEO básico ── -->
-  <meta name="description" content="Invitaciones digitales personalizadas para XV años, bodas, bautizos, cumpleaños y más. Diseños únicos para momentos inolvidables." />
+  <meta name="description" content="Invitaciones digitales premium para XV años, bodas, bautizos, cumpleaños, graduaciones y eventos especiales. Diseño profesional, atención personalizada y entrega rápida." />
   <meta name="keywords" content="invitaciones digitales, XV años, bodas, bautizos, cumpleaños, invitaciones por WhatsApp" />
   <meta name="author" content="InvitArte" />
+  <meta name="theme-color" content="#111827" />
 
   <!-- ── Open Graph — para WhatsApp, Facebook, Instagram ── -->
-  <meta property="og:title" content="InvitArte — Invitaciones Digitales Únicas" />
-  <meta property="og:description" content="Diseños únicos para momentos inolvidables. XV años, bodas, bautizos y más." />
+  <meta property="og:title" content="InvitArte — Invitaciones Digitales Premium" />
+  <meta property="og:description" content="Invitaciones digitales elegantes, modernas y personalizadas para eventos memorables." />
   <meta property="og:image" content="icons/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -26,7 +27,7 @@
   <!-- ── Twitter / X card ── -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="InvitArte — Invitaciones Digitales" />
-  <meta name="twitter:description" content="Diseños únicos para momentos inolvidables." />
+  <meta name="twitter:description" content="Invitaciones digitales elegantes, modernas y personalizadas." />
   <meta name="twitter:image" content="icons/og-image.png" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -36,7 +37,24 @@
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
-<body>
+<body class="professional-home">
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
+
+  <!-- ============================
+       LIGHTBOX / VISOR DE IMÁGENES
+  ============================= -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
+    <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+    <div class="lightbox-actions" id="lightboxActions">
+      <a href="#" class="btn btn-whatsapp" id="lightboxWA" target="_blank" rel="noopener">
+        <i data-lucide="message-circle"></i> Cotizar por WhatsApp
+      </a>
+    </div>
+  </div>
 
   <!-- ============================
        NAVBAR
@@ -44,18 +62,17 @@
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
       <a href="#" class="logo">
-        <!-- Si ya tienes logo.svg, usa la línea de abajo y borra el texto -->
         <img src="icons/logo.png" alt="InvitArte" class="logo-img" />
-        
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#inicio">Inicio</a>
         <a href="#disenos">Diseños</a>
         <a href="#como-funciona">Cómo funciona</a>
+        <a href="#materiales">Materiales</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a href="https://wa.me/9221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
+      <a href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
          class="btn btn-whatsapp" target="_blank" rel="noopener">
         <i data-lucide="message-circle"></i> WhatsApp
       </a>
@@ -69,82 +86,81 @@
        HERO
   ============================= -->
   <section class="hero" id="inicio">
-    <!-- Decorative blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
     <div class="container hero-inner">
-      <!-- Left Text -->
       <div class="hero-text" data-animate="fade-up">
-        <span class="hero-tag">✦ Invitaciones Digitales</span>
+        <span class="hero-tag">Estudio de invitaciones digitales premium</span>
         <h1 class="hero-title">
-          Diseños únicos<br/>
-          <em>para momentos<br/>inolvidables</em>
+          Invitaciones digitales<br/>
+          <em>con presencia, estilo<br/>y experiencia premium</em>
         </h1>
         <p class="hero-desc">
-          Invitaciones digitales personalizadas para XV años, bodas, bautizos, 
-          cumpleaños y más. Comparte tu momento de una forma original y especial.
+          Diseñamos invitaciones digitales elegantes para XV años, bodas, bautizos,
+          cumpleaños, graduaciones y eventos especiales. Una experiencia visual cuidada, clara y lista para compartir por WhatsApp.
         </p>
         <div class="hero-ctas">
           <a href="#disenos" class="btn btn-primary">
             <i data-lucide="eye"></i> Ver Diseños
           </a>
-          <a href="https://wa.me/9221224111?text=Hola%2C%20quiero%20cotizar%20una%20invitación" 
+          <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20cotizar%20una%20invitación" 
              class="btn btn-outline" target="_blank" rel="noopener">
             <i data-lucide="message-circle"></i> Cotizar por WhatsApp
           </a>
         </div>
-        <!-- Stats row -->
         <div class="hero-stats">
           <div class="stat">
             <strong>500+</strong>
-            <span>Diseños creados</span>
+            <span>proyectos diseñados</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <strong>98%</strong>
-            <span>Clientes satisfechos</span>
+            <span>satisfacción</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <strong>48h</strong>
-            <span>Entrega rápida</span>
+            <span>entrega estimada</span>
           </div>
+        </div>
+        <div class="hero-trust" aria-label="Beneficios del servicio">
+          <span><i data-lucide="shield-check"></i> Diseño profesional</span>
+          <span><i data-lucide="smartphone"></i> Optimizado para celular</span>
+          <span><i data-lucide="send"></i> Listo para compartir</span>
         </div>
       </div>
 
-      <!-- Right: Image Carousel -->
       <div class="hero-visual" data-animate="fade-left">
-
-        <!-- Main carousel frame -->
         <div class="hero-carousel">
-          <!-- Slides -->
           <div class="hc-slide active" style="--i:0">
-            <img src="images/gallery/boda-8.jpg"        alt="Invitación de Boda"        loading="eager" />
+            <img src="images/gallery/boda-8.jpg" alt="Invitación de Boda" loading="eager" />
           </div>
           <div class="hc-slide" style="--i:1">
-            <img src="images/gallery/xv-4.jpeg"          alt="Invitación XV Años"         loading="lazy" />
+            <img src="images/gallery/xv-4.jpeg" alt="Invitación XV Años" loading="lazy" />
           </div>
           <div class="hc-slide" style="--i:2">
-            <img src="images/gallery/bautizo-1.jpeg"     alt="Invitación Bautizo"         loading="lazy" />
+            <img src="images/gallery/bautizo-1.jpeg" alt="Invitación Bautizo" loading="lazy" />
           </div>
           <div class="hc-slide" style="--i:3">
-            <img src="images/gallery/cumple-5.jpg"      alt="Invitación Cumpleaños"      loading="lazy" />
+            <img src="images/gallery/cumple-5.jpg" alt="Invitación Cumpleaños" loading="lazy" />
           </div>
           <div class="hc-slide" style="--i:4">
-            <img src="images/gallery/comunion-1.png"    alt="Invitación Comunión"        loading="lazy" />
+            <img src="images/gallery/comunion-1.png" alt="Invitación Comunión" loading="lazy" />
           </div>
           <div class="hc-slide" style="--i:5">
-            <img src="images/gallery/confirmacion-1.jpg" alt="Invitación Confirmación"   loading="lazy" />
+            <img src="images/gallery/confirmacion-1.jpg" alt="Invitación Confirmación" loading="lazy" />
+          </div>
+          <div class="hc-slide" style="--i:6">
+            <img src="images/gallery/graduacion-1.jpg" alt="Invitación Graduación" loading="lazy" />
           </div>
 
-          <!-- Category label -->
           <div class="hc-label" id="hcLabel">
             <span class="hc-label-dot"></span>
             <span id="hcLabelText">Boda</span>
           </div>
 
-          <!-- Dot indicators -->
           <div class="hc-dots" id="hcDots">
             <button class="hc-dot active" data-slide="0" aria-label="Slide 1"></button>
             <button class="hc-dot" data-slide="1" aria-label="Slide 2"></button>
@@ -152,13 +168,12 @@
             <button class="hc-dot" data-slide="3" aria-label="Slide 4"></button>
             <button class="hc-dot" data-slide="4" aria-label="Slide 5"></button>
             <button class="hc-dot" data-slide="5" aria-label="Slide 6"></button>
+            <button class="hc-dot" data-slide="6" aria-label="Slide 7"></button>
           </div>
 
-          <!-- Left blend gradient -->
           <div class="hc-gradient"></div>
         </div>
 
-        <!-- Floating side thumbnails -->
         <div class="hc-thumbs">
           <div class="hc-thumb hc-thumb-1">
             <img src="images/gallery/boda-5.jpg" alt="Diseño boda" loading="lazy" />
@@ -168,18 +183,13 @@
           </div>
         </div>
 
-        <!-- Floating badges -->
-        <div class="float-badge badge-1">🌸 Personalizado</div>
-        <div class="float-badge badge-2">⚡ Entrega 48h</div>
+        <div class="float-badge badge-1">Diseño a medida</div>
+        <div class="float-badge badge-2">Entrega ágil</div>
 
-        <!-- Decorative petals -->
-        <div class="petal petal-1">🌸</div>
-        <div class="petal petal-2">🌷</div>
-        <div class="petal petal-3">✿</div>
+        
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="scroll-indicator">
       <span>Descubre más</span>
       <div class="scroll-line"></div>
@@ -187,54 +197,103 @@
   </section>
 
   <!-- ============================
-       CATEGORÍAS
-  ============================= -->
-  <section class="categories section" id="categorias">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Tu Evento Especial</span>
-        <h2 class="section-title">Elige tu <em>categoría</em></h2>
-      </div>
-      <div class="categories-grid">
-        <div class="cat-card" data-animate="fade-up" data-delay="0">
-          <div class="cat-icon">👗</div>
+     CATEGORÍAS
+============================= -->
+<section class="categories section" id="categorias">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-tag">Servicios por evento</span>
+      <h2 class="section-title">Soluciones visuales para <em>cada celebración</em></h2>
+    </div>
+    <div class="categories-grid">
+
+      <div class="cat-card" data-animate="fade-up" data-delay="0">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/xv-4.jpeg" alt="XV Años" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>XV Años</h3>
           <p>Invitaciones elegantes para tu gran debut</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="cat-card" data-animate="fade-up" data-delay="100">
-          <div class="cat-icon">💍</div>
+      </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="100">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/boda-8.jpg" alt="Bodas" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>Bodas</h3>
           <p>El día más especial merece el mejor diseño</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="cat-card" data-animate="fade-up" data-delay="200">
-          <div class="cat-icon">🕊️</div>
+      </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="200">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/bautizo-1.jpeg" alt="Bautizos" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>Bautizos</h3>
           <p>Celebra la bienvenida de tu pequeño ángel</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="cat-card" data-animate="fade-up" data-delay="300">
-          <div class="cat-icon">🎂</div>
+      </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="300">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/cumple-5.jpg" alt="Cumpleaños" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>Cumpleaños</h3>
           <p>Diseños festivos para cada edad</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="cat-card" data-animate="fade-up" data-delay="400">
-          <div class="cat-icon">🥂</div>
+      </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="400">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/comunion-1.png" alt="Comuniones" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>Comuniones</h3>
           <p>Momentos de fe con estilo y elegancia</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
-        <div class="cat-card" data-animate="fade-up" data-delay="500">
-          <div class="cat-icon">🕊️</div>
+      </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="500">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/confirmacion-1.jpg" alt="Confirmaciones" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
           <h3>Confirmaciones</h3>
           <p>Celebra un nuevo paso en tu fe</p>
           <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
+
+      <div class="cat-card" data-animate="fade-up" data-delay="600">
+        <div class="cat-img-wrap">
+          <img src="images/gallery/graduacion-1.jpg" alt="Graduaciones" loading="lazy" />
+          <div class="cat-img-overlay"></div>
+        </div>
+        <div class="cat-body">
+          <h3>Graduaciones</h3>
+          <p>Celebra tu logro académico con estilo</p>
+          <a href="#disenos" class="cat-link">Ver ejemplos <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ============================
        GALERÍA / PORTAFOLIO
@@ -242,12 +301,11 @@
   <section class="gallery section" id="disenos">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Portafolio</span>
-        <h2 class="section-title">Nuestros <em>diseños</em></h2>
-        <p class="section-desc">Cada invitación es una obra de arte creada especialmente para ti</p>
+        <span class="section-tag">Portafolio seleccionado</span>
+        <h2 class="section-title">Diseños con acabado <em>profesional</em></h2>
+        <p class="section-desc">Explora estilos reales por categoría. Cada pieza puede adaptarse a tu evento, colores, fotografías, textos y temática.</p>
       </div>
 
-      <!-- Filter tabs -->
       <div class="gallery-filters" data-animate="fade-up">
         <button class="filter-btn active" data-filter="all">Todos</button>
         <button class="filter-btn" data-filter="xv">XV Años</button>
@@ -256,16 +314,17 @@
         <button class="filter-btn" data-filter="cumple">Cumpleaños</button>
         <button class="filter-btn" data-filter="comunion">Comunión</button>
         <button class="filter-btn" data-filter="confirmacion">Confirmación</button>
+        <button class="filter-btn" data-filter="graduacion">Graduación</button>
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
-
-        <!-- ── BODAS ── -->
+        <!-- BODAS -->
         <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/boda-1.jpeg" alt="Invitación de Boda estilo floral" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -278,7 +337,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/boda-2.jpeg" alt="Invitación de Boda elegante dorada" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -291,7 +351,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/boda-3.jpeg" alt="Invitación de Boda romántica" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -304,7 +365,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/boda-4.jpeg" alt="Invitación de Boda minimalista" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -313,104 +375,125 @@
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="200">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-5.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-5.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Clásica</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="250">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-6.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-6.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Vintage</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="300">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-7.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-7.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Moderna</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="350">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-8.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-8.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Elegante</h4>
           </div>
         </div>
 
-
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="400">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-9.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-9.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Rústica</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="450">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-10.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-10.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Acuarela</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="500">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/boda-11.jpg" alt="Invitación de Boda minimalista" loading="lazy" />
+            <img src="images/gallery/boda-11.jpg" alt="Invitación de Boda" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Boda</span>
-            <h4>Boda — Minimalista</h4>
+            <h4>Boda — Tropical</h4>
           </div>
         </div>
 
-        <!-- ── XV AÑOS ── -->
+        <div class="gallery-card" data-category="boda" data-animate="fade-up" data-delay="550">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/boda-12.jpg" alt="Invitación de Boda" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Boda</span>
+            <h4>Boda — Ilustrada</h4>
+          </div>
+        </div>
+
+        <!-- XV AÑOS -->
         <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/xv-1.jpeg" alt="Invitación XV Años estilo oscuro" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -423,7 +506,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/xv-2.jpg" alt="Invitación XV Años rosa" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -436,7 +520,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/xv-3.jpeg" alt="Invitación XV Años dorado" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -449,7 +534,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/xv-4.jpeg" alt="Invitación XV Años floral" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -458,77 +544,83 @@
           </div>
         </div>
 
-        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="200">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/xv-5.jpg" alt="Invitación XV Años floral" loading="lazy" />
+            <img src="images/gallery/xv-5.jpg" alt="Invitación XV Años" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">XV Años</span>
-            <h4>XV Años — Floral Vintage</h4>
+            <h4>XV Años — Princesa</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="250">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/xv-6.jpg" alt="Invitación XV Años floral" loading="lazy" />
+            <img src="images/gallery/xv-6.jpg" alt="Invitación XV Años" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">XV Años</span>
-            <h4>XV Años — Floral Vintage</h4>
+            <h4>XV Años — Moderno</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="300">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/xv-7.jpg" alt="Invitación XV Años floral" loading="lazy" />
+            <img src="images/gallery/xv-7.jpg" alt="Invitación XV Años" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">XV Años</span>
-            <h4>XV Años — Floral Vintage</h4>
+            <h4>XV Años — Elegante</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="350">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/xv-8.jpg" alt="Invitación XV Años floral" loading="lazy" />
+            <img src="images/gallery/xv-8.jpg" alt="Invitación XV Años" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">XV Años</span>
-            <h4>XV Años — Floral Vintage</h4>
+            <h4>XV Años — Clásico</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="xv" data-animate="fade-up" data-delay="400">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/xv-9.jpg" alt="Invitación XV Años floral" loading="lazy" />
+            <img src="images/gallery/xv-9.jpg" alt="Invitación XV Años" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">XV Años</span>
-            <h4>XV Años — Floral Vintage</h4>
+            <h4>XV Años — Ilustrado</h4>
           </div>
         </div>
 
-        <!-- ── BAUTIZOS ── -->
+        <!-- BAUTIZOS -->
         <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/bautizo-1.jpeg" alt="Invitación Bautizo celeste niño" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -541,7 +633,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/bautizo-2.jpeg" alt="Invitación Bautizo rosa niña" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -554,7 +647,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/bautizo-3.jpeg" alt="Invitación Bautizo dorado" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -567,7 +661,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/bautizo-4.jpeg" alt="Invitación Bautizo floral" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -576,77 +671,83 @@
           </div>
         </div>
 
-        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="200">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/bautizo-5.jpg" alt="Invitación Bautizo floral" loading="lazy" />
+            <img src="images/gallery/bautizo-5.jpg" alt="Invitación Bautizo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Bautizo</span>
-            <h4>Bautizo — Floral Delicado</h4>
+            <h4>Bautizo — Moderno</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="250">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/bautizo-6.jpeg" alt="Invitación Bautizo floral" loading="lazy" />
+            <img src="images/gallery/bautizo-6.jpeg" alt="Invitación Bautizo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Bautizo</span>
-            <h4>Bautizo — Floral Delicado</h4>
+            <h4>Bautizo — Vintage</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="300">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/bautizo-7.jpeg" alt="Invitación Bautizo floral" loading="lazy" />
+            <img src="images/gallery/bautizo-7.jpeg" alt="Invitación Bautizo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Bautizo</span>
-            <h4>Bautizo — Floral Delicado</h4>
+            <h4>Bautizo — Clásico</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="350">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/bautizo-8.jpeg" alt="Invitación Bautizo floral" loading="lazy" />
+            <img src="images/gallery/bautizo-8.jpeg" alt="Invitación Bautizo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Bautizo</span>
-            <h4>Bautizo — Floral Delicado</h4>
+            <h4>Bautizo — Elegante</h4>
           </div>
         </div>
 
-        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="bautizo" data-animate="fade-up" data-delay="400">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/bautizo-9.jpg" alt="Invitación Bautizo floral" loading="lazy" />
+            <img src="images/gallery/bautizo-9.jpg" alt="Invitación Bautizo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Bautizo</span>
-            <h4>Bautizo — Floral Delicado</h4>
+            <h4>Bautizo — Ilustrado</h4>
           </div>
         </div>
 
-        <!-- ── CUMPLEAÑOS ── -->
+        <!-- CUMPLEAÑOS -->
         <div class="gallery-card" data-category="cumple" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/cumple-1.jpeg" alt="Invitación Cumpleaños globos" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -659,7 +760,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/cumple-2.jpeg" alt="Invitación Cumpleaños festivo" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -672,7 +774,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/cumple-3.jpeg" alt="Invitación Cumpleaños infantil" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -685,7 +788,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/cumple-4.jpeg" alt="Invitación Cumpleaños adulto elegante" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -694,25 +798,27 @@
           </div>
         </div>
 
-        <div class="gallery-card" data-category="cumple" data-animate="fade-up" data-delay="150">
+        <div class="gallery-card" data-category="cumple" data-animate="fade-up" data-delay="200">
           <div class="gallery-img-wrap">
-            <img src="images/gallery/cumple-5.jpg" alt="Invitación Cumpleaños adulto elegante" loading="lazy" />
+            <img src="images/gallery/cumple-5.jpg" alt="Invitación Cumpleaños" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
             <span class="gallery-cat">Cumpleaños</span>
-            <h4>Cumpleaños — Adulto Elegante</h4>
+            <h4>Cumpleaños — Moderno</h4>
           </div>
         </div>
 
-        <!-- ── COMUNIÓN ── -->
+        <!-- COMUNIÓN -->
         <div class="gallery-card" data-category="comunion" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/comunion-1.png" alt="Invitación Comunión clásico crema" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -725,7 +831,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/comunion-2.jpg" alt="Invitación Comunión floral" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -738,7 +845,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/comunion-3.jpg" alt="Invitación Comunión dorado" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -751,7 +859,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/comunion-4.jpg" alt="Invitación Comunión moderno" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -760,12 +869,13 @@
           </div>
         </div>
 
-        <!-- ── CONFIRMACIÓN ── -->
+        <!-- CONFIRMACIÓN -->
         <div class="gallery-card" data-category="confirmacion" data-animate="fade-up" data-delay="0">
           <div class="gallery-img-wrap">
             <img src="images/gallery/confirmacion-1.jpg" alt="Invitación Confirmación dorado oscuro" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -778,7 +888,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/confirmacion-2.jpg" alt="Invitación Confirmación elegante" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -791,7 +902,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/confirmacion-3.jpg" alt="Invitación Confirmación moderna" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -804,7 +916,8 @@
           <div class="gallery-img-wrap">
             <img src="images/gallery/confirmacion-4.jpg" alt="Invitación Confirmación floral" loading="lazy" />
             <div class="gallery-overlay">
-              <i data-lucide="message-circle"></i> Cotizar
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
             </div>
           </div>
           <div class="gallery-info">
@@ -813,10 +926,94 @@
           </div>
         </div>
 
-      </div><!-- /gallery-grid -->
+        <!-- GRADUACIÓN -->
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="0">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-1.jpg" alt="Invitación de Graduación moderna" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Moderna</h4>
+          </div>
+        </div>
 
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="50">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-2.jpg" alt="Invitación de Graduación" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Elegante</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="100">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-3.jpg" alt="Invitación de Graduación" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Clásica</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="150">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-4.jpg" alt="Invitación de Graduación" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Creativa</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="150">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-5.jpg" alt="Invitación de Graduación" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Creativa</h4>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="graduacion" data-animate="fade-up" data-delay="200">
+          <div class="gallery-img-wrap">
+            <img src="images/gallery/graduacion-6.jpg" alt="Invitación de Graduación" loading="lazy" />
+            <div class="gallery-overlay">
+              <span><i data-lucide="search"></i> Ver diseño</span>
+              <span class="gallery-overlay-wa"><i data-lucide="message-circle"></i> Cotizar</span>
+            </div>
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-cat">Graduación</span>
+            <h4>Graduación — Premium</h4>
+          </div>
+        </div>
+      </div>
+  
       <div class="gallery-cta" data-animate="fade-up">
-        <a href="https://wa.me/9221224111?text=Hola%2C%20quisiera%20ver%20más%20diseños" 
+        <a href="https://wa.me/5219221224111?text=Hola%2C%20quisiera%20ver%20más%20diseños" 
            class="btn btn-primary" target="_blank" rel="noopener">
           Ver más diseños
         </a>
@@ -830,13 +1027,12 @@
   <section class="live-invites section" id="en-vivo">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Experiencia real</span>
+        <span class="section-tag">Experiencia digital</span>
         <h2 class="section-title">Invitaciones <em>en vivo</em></h2>
         <p class="section-desc">Así se ve una invitación digital real. Ábrela, explórala e imagina la tuya</p>
       </div>
 
       <div class="live-grid">
-
         <div class="live-card" data-animate="fade-up" data-delay="0">
           <div class="live-preview">
             <iframe 
@@ -858,7 +1054,7 @@
               <a href="https://ciberalexis97.github.io/Boda-Miguel-Deysi/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
                 <i data-lucide="external-link"></i> Ver completa
               </a>
-              <a href="https://wa.me/9221224111?text=Hola%2C%20quiero%20una%20invitación%20como%20la%20de%20Boda%20Miguel%20y%20Deysi" 
+              <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20una%20invitación%20como%20la%20de%20Boda%20Miguel%20y%20Deysi" 
                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
                 <i data-lucide="message-circle"></i> La quiero
               </a>
@@ -887,7 +1083,7 @@
               <a href="https://ciberalexis97.github.io/Prueba-de-invitacion-boda/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
                 <i data-lucide="external-link"></i> Ver completa
               </a>
-              <a href="https://wa.me/9221224111?text=Hola%2C%20quiero%20una%20invitación%20estilo%20Boda%20Clásica" 
+              <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20una%20invitación%20estilo%20Boda%20Clásica" 
                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
                 <i data-lucide="message-circle"></i> La quiero
               </a>
@@ -916,7 +1112,7 @@
               <a href="https://ciberalexis97.github.io/Invitaci-n-XV-A-os-Carol-Sofia/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
                 <i data-lucide="external-link"></i> Ver completa
               </a>
-              <a href="https://wa.me/9221224111?text=Hola%2C%20quiero%20una%20invitación%20de%20XV%20como%20la%20de%20Carol%20Sofía" 
+              <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20una%20invitación%20de%20XV%20como%20la%20de%20Carol%20Sofía" 
                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
                 <i data-lucide="message-circle"></i> La quiero
               </a>
@@ -928,7 +1124,7 @@
           <div class="live-preview">
             <iframe 
               src="https://ciberalexis97.github.io/baby-shower_invitacion/" 
-              title="Invitación Boda premium"
+              title="Invitación Baby Shower"
               loading="lazy"
               scrolling="no"
               frameborder="0">
@@ -939,21 +1135,20 @@
             <div class="live-badge">
               <span class="live-dot"></span> En vivo
             </div>
-            <h4>Boda — Edición Premium</h4>
+            <h4>Baby Shower — Edición Premium</h4>
             <p>Versión premium con confirmación de asistencia integrada</p>
             <div class="live-actions">
               <a href="https://ciberalexis97.github.io/baby-shower_invitacion/" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
                 <i data-lucide="external-link"></i> Ver completa
               </a>
-              <a href="https://wa.me/9221224111?text=Hola%2C%20quiero%20la%20invitación%20Boda%20Premium" 
+              <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20la%20invitación%20Baby%20Shower%20Premium" 
                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
                 <i data-lucide="message-circle"></i> La quiero
               </a>
             </div>
           </div>
         </div>
-
-      </div><!-- /live-grid -->
+      </div>
     </div>
   </section>
 
@@ -963,8 +1158,8 @@
   <section class="why section" id="por-que">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Nuestras ventajas</span>
-        <h2 class="section-title">¿Por qué <em>elegirme?</em></h2>
+        <span class="section-tag">Diferenciadores</span>
+        <h2 class="section-title">¿Por qué trabajar <em>con InvitArte?</em></h2>
       </div>
       <div class="why-grid">
         <div class="why-card" data-animate="fade-up" data-delay="0">
@@ -1000,12 +1195,102 @@
   </section>
 
   <!-- ============================
+       MATERIALES DE IMPRESIÓN 🖨️
+  ============================= -->
+  <section class="materiales section" id="materiales">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Acabados físicos</span>
+        <h2 class="section-title">Materiales de <em>impresión</em></h2>
+        <p class="section-desc">Trabajamos con papeles de la más alta calidad para que tu invitación sea una experiencia al tacto</p>
+      </div>
+
+      <!-- Papeles para invitaciones -->
+      <div class="materiales-subsection" data-animate="fade-up">
+        <h3 class="materiales-subtitle">
+          <i data-lucide="file-text"></i> Papeles para Invitaciones
+        </h3>
+        <div class="materiales-grid">
+          <div class="material-card">
+            <div class="material-icon">📄</div>
+            <h4>Opalina Gruesa</h4>
+            <p>Papel de alto gramaje con acabado liso y elegante. Ideal para invitaciones formales como bodas y XV años. Alta resistencia y excelente impresión.</p>
+            <span class="material-badge">Recomendado para eventos formales</span>
+          </div>
+          <div class="material-card">
+            <div class="material-icon">📃</div>
+            <h4>Opalina Delgada</h4>
+            <p>Versión más ligera de la opalina, perfecta para invitaciones que requieren dobleces o sobres. Mismo acabado profesional en menor gramaje.</p>
+            <span class="material-badge">Ideal para sets completos</span>
+          </div>
+          <div class="material-card">
+            <div class="material-icon">🖼️</div>
+            <h4>Papel Fotográfico Grueso</h4>
+            <p>Acabado brillante o mate con calidad fotográfica. Colores vibrantes y detalles nítidos. Perfecto para invitaciones con muchas fotos o diseños a todo color.</p>
+            <span class="material-badge">Máxima calidad de imagen</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portainvitaciones -->
+      <div class="materiales-subsection" data-animate="fade-up">
+        <h3 class="materiales-subtitle">
+          <i data-lucide="folder-open"></i> Portainvitaciones
+        </h3>
+        <div class="materiales-grid">
+          <div class="material-card material-card-colored">
+            <div class="material-icon">🎨</div>
+            <h4>Cartulina Lino Texturizada</h4>
+            <p>Textura elegante tipo tela con acabado de lino. Agrega un toque sofisticado y artesanal a tus invitaciones.</p>
+            <div class="material-colors">
+              <span class="color-dot" style="background:#1a3a5c" title="Azul"></span>
+              <span class="color-dot" style="background:#2d5a27" title="Verde"></span>
+              <span class="color-dot" style="background:#6b1a2a" title="Vino"></span>
+              <span class="color-label">Colores: Azul, Verde, Vino</span>
+            </div>
+          </div>
+          <div class="material-card material-card-colored">
+            <div class="material-icon">✨</div>
+            <h4>Cartulina Aperlada</h4>
+            <p>Acabado con brillo perlado sutil que refleja la luz delicadamente. Elegante y moderna para eventos contemporáneos.</p>
+            <div class="material-colors">
+              <span class="color-dot" style="background:linear-gradient(135deg, #fff5f5, #f0c0c0)" title="Rosa perlado"></span>
+              <span class="color-dot" style="background:linear-gradient(135deg, #f5f5ff, #c0c0f0)" title="Azul perlado"></span>
+              <span class="color-dot" style="background:linear-gradient(135deg, #fffff0, #f0e0c0)" title="Crema perlado"></span>
+              <span class="color-label">Varios tonos disponibles</span>
+            </div>
+          </div>
+          <div class="material-card material-card-colored">
+            <div class="material-icon">💎</div>
+            <h4>Cartulina Nacarada</h4>
+            <p>Brillo nacarado intenso con efecto tornasol. El acabado más lujoso para invitaciones que buscan deslumbrar.</p>
+            <div class="material-colors">
+              <span class="color-dot" style="background:linear-gradient(135deg, #fff0f5, #ffc0cb)" title="Rosa nacarado"></span>
+              <span class="color-dot" style="background:linear-gradient(135deg, #f0f5ff, #c0d0ff)" title="Azul nacarado"></span>
+              <span class="color-dot" style="background:linear-gradient(135deg, #fffff5, #ffe0c0)" title="Dorado nacarado"></span>
+              <span class="color-label">Varios tonos disponibles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="materiales-cta" data-animate="fade-up">
+        <p>¿No sabes qué material elegir? <strong>Te asesoro sin costo</strong> para encontrar la mejor opción para tu evento.</p>
+        <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20información%20sobre%20materiales%20de%20impresión" 
+           class="btn btn-outline" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i> Consultar materiales
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
        CÓMO FUNCIONA
   ============================= -->
   <section class="process section" id="como-funciona">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Simple y rápido</span>
+        <span class="section-tag">Proceso claro</span>
         <h2 class="section-title">¿Cómo <em>funciona?</em></h2>
       </div>
       <div class="process-steps">
@@ -1046,12 +1331,11 @@
   <section class="testimonials section" id="testimonios">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-tag">✦ Opiniones reales</span>
+        <span class="section-tag">Confianza</span>
         <h2 class="section-title">Lo que dicen <em>mis clientes</em></h2>
       </div>
       <div class="testimonials-slider" id="testimonialsSlider">
         <div class="testimonials-track" id="testimonialsTrack">
-
           <div class="testi-card">
             <div class="testi-quote">"</div>
             <p>La invitación quedó hermosa, a todos les encantó. Súper profesional y amable. ¡100% recomendada!</p>
@@ -1064,7 +1348,6 @@
               </div>
             </div>
           </div>
-
           <div class="testi-card">
             <div class="testi-quote">"</div>
             <p>Excelente trabajo, superó mis expectativas. La entrega fue súper rápida y el diseño quedó precioso.</p>
@@ -1077,7 +1360,6 @@
               </div>
             </div>
           </div>
-
           <div class="testi-card">
             <div class="testi-quote">"</div>
             <p>Muy creativa y atenta a los detalles. Mi familia quedó enamorada del bautizo de mi hijo. ¡Gracias!</p>
@@ -1090,7 +1372,6 @@
               </div>
             </div>
           </div>
-
           <div class="testi-card">
             <div class="testi-quote">"</div>
             <p>Increíble diseño para la quinceañera de mi hija. Todos preguntaron dónde la hice. Definitivamente la recomiendo.</p>
@@ -1103,10 +1384,8 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-      <!-- Dots -->
       <div class="slider-dots" id="sliderDots">
         <button class="dot active" data-idx="0" aria-label="Testimonio 1"></button>
         <button class="dot" data-idx="1" aria-label="Testimonio 2"></button>
@@ -1121,12 +1400,11 @@
   ============================= -->
   <section class="contact section" id="contacto">
     <div class="container contact-inner">
-      <!-- Left CTA -->
       <div class="contact-left" data-animate="fade-right">
-        <span class="section-tag">✦ Hablemos</span>
+        <span class="section-tag">Cotización personalizada</span>
         <h2 class="section-title">¿Lista para tu <em>invitación?</em></h2>
         <p>Escríbeme y hagamos realidad la invitación de tus sueños. Respondo en minutos.</p>
-        <a href="https://wa.me/9221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
+        <a href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
            class="btn btn-whatsapp-lg" target="_blank" rel="noopener">
           <i data-lucide="message-circle"></i>
           Escribir por WhatsApp
@@ -1137,7 +1415,6 @@
         </div>
       </div>
 
-      <!-- Right Form -->
       <div class="contact-form-wrap" data-animate="fade-left">
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-group">
@@ -1157,6 +1434,7 @@
               <option value="cumple">Cumpleaños</option>
               <option value="comunion">Comunión</option>
               <option value="confirmacion">Confirmación</option>
+              <option value="graduacion">Graduación</option>
               <option value="otro">Otro</option>
             </select>
             <label for="fevento">Tipo de evento</label>
@@ -1180,25 +1458,18 @@
        FOOTER
   ============================= -->
   <footer class="footer">
-
-    <!-- Top wave divider -->
     <div class="footer-wave">
       <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="var(--cream)"/>
       </svg>
     </div>
 
-    <!-- Main footer content -->
     <div class="footer-main">
       <div class="container footer-inner">
-
-        <!-- Brand -->
         <div class="footer-brand">
           <img src="icons/logo.png" alt="InvitArte" class="logo-img logo-img-sm footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
           <span class="logo-script footer-logo-text" style="display:none">InvitArte</span>
           <p class="footer-tagline">Diseños únicos para<br/>momentos inolvidables.</p>
-
-          <!-- Mini stats -->
           <div class="footer-stats">
             <div class="footer-stat">
               <strong>500+</strong>
@@ -1215,18 +1486,17 @@
           </div>
         </div>
 
-        <!-- Quick links -->
         <div class="footer-links">
           <h4>Navegación</h4>
           <a href="#inicio"><i data-lucide="chevron-right"></i>Inicio</a>
           <a href="#disenos"><i data-lucide="chevron-right"></i>Diseños</a>
           <a href="#en-vivo"><i data-lucide="chevron-right"></i>En vivo</a>
           <a href="#como-funciona"><i data-lucide="chevron-right"></i>Cómo funciona</a>
+          <a href="#materiales"><i data-lucide="chevron-right"></i>Materiales</a>
           <a href="#testimonios"><i data-lucide="chevron-right"></i>Testimonios</a>
           <a href="#contacto"><i data-lucide="chevron-right"></i>Contacto</a>
         </div>
 
-        <!-- Categories -->
         <div class="footer-cats">
           <h4>Categorías</h4>
           <a href="#disenos"><i data-lucide="chevron-right"></i>XV Años</a>
@@ -1235,15 +1505,13 @@
           <a href="#disenos"><i data-lucide="chevron-right"></i>Cumpleaños</a>
           <a href="#disenos"><i data-lucide="chevron-right"></i>Comuniones</a>
           <a href="#disenos"><i data-lucide="chevron-right"></i>Confirmaciones</a>
+          <a href="#disenos"><i data-lucide="chevron-right"></i>Graduaciones</a>
         </div>
 
-        <!-- Contact info -->
         <div class="footer-contact">
           <h4>Contacto</h4>
-
           <div class="footer-contact-items">
-            <!-- WhatsApp -->
-            <a href="https://wa.me/9221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital"
+            <a href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital"
                target="_blank" rel="noopener" class="footer-contact-item wa-item">
               <div class="fci-icon">
                 <i data-lucide="message-circle"></i>
@@ -1253,8 +1521,6 @@
                 <span class="fci-value">922 122 4111</span>
               </div>
             </a>
-
-            <!-- Horario -->
             <div class="footer-contact-item">
               <div class="fci-icon">
                 <i data-lucide="clock"></i>
@@ -1264,8 +1530,6 @@
                 <span class="fci-value">Lun–Sáb 9am – 8pm</span>
               </div>
             </div>
-
-            <!-- Dirección -->
             <div class="footer-contact-item">
               <div class="fci-icon">
                 <i data-lucide="map-pin"></i>
@@ -1276,41 +1540,34 @@
               </div>
             </div>
           </div>
-
-          <!-- Social icons -->
           <div class="footer-social-row">
             <a href="https://www.facebook.com/share/1CaVNxzWxv/"
                target="_blank" rel="noopener" class="fsoc-btn fb" aria-label="Facebook">
               <i data-lucide="facebook"></i>
             </a>
-
             <a href="https://www.tiktok.com/@ciberalexis"
                target="_blank" rel="noopener" class="fsoc-btn tt" aria-label="TikTok">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
             </a>
-            -
             <a href="https://youtube.com/@ciber_alexistutoriales"
                target="_blank" rel="noopener" class="fsoc-btn yt" aria-label="YouTube">
               <i data-lucide="youtube"></i>
             </a>
           </div>
         </div>
-
       </div>
-    </div><!-- /footer-main -->
+    </div>
 
-    <!-- Bottom bar -->
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <p>© 2026 <strong>InvitArte</strong>. Todos los derechos reservados.</p>
         <p class="footer-made">Hecho con <span>💗</span> en Zaragoza, Veracruz</p>
       </div>
     </div>
-
   </footer>
 
   <!-- WhatsApp FAB -->
-  <a href="https://wa.me/9221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
+  <a href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20una%20invitación%20digital" 
      class="wa-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
     <i data-lucide="message-circle"></i>
   </a>
