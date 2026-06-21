@@ -1,0 +1,32 @@
+INVITARTE — Actualización de Diferenciadores Visuales
+=====================================================
+
+Esta actualización reemplaza la sección "Diferenciadores / ¿Por qué trabajar con InvitArte?"
+por una experiencia visual de cuatro razones para elegir el servicio.
+
+NUEVO:
+- Cuatro imágenes interactivas en orden cronológico/visual.
+- Efectos de zoom, brillo, profundidad y animación al pasar el cursor.
+- Vista ampliada a pantalla completa usando el visor existente.
+- Navegación en el visor mediante flechas, teclado y deslizamiento táctil.
+- Diseño adaptable para computadora, tableta y celular.
+- Botón de WhatsApp para cotizar desde la misma sección.
+
+IMÁGENES NECESARIAS:
+Coloca los archivos siguientes dentro de images/eleccion/:
+- proceso_1.jpg
+- proceso_2.jpg
+- proceso_3.jpg
+- proceso_4.jpg
+
+El código ya apunta a esas rutas exactas.
+
+IMPORTANTE:
+Este paquete conserva los archivos de código actualizados y las imágenes de categorías
+que estaban disponibles. Mantén también las carpetas ya existentes de tu sitio, como:
+- icons/
+- images/gallery/
+- images/papeles/
+- images/procesos/
+
+Luego reemplaza index.html, styles.css y script.js en la carpeta principal de tu proyecto.

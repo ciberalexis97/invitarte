@@ -43,12 +43,12 @@
   <!-- ============================
        LIGHTBOX / VISOR DE IMÁGENES
   ============================= -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Cerrar vista ampliada">&times;</button>
     <img src="" alt="" class="lightbox-img" id="lightboxImg" />
     <div class="lightbox-caption" id="lightboxCaption"></div>
-    <button class="lightbox-prev" id="lightboxPrev">&#10094;</button>
-    <button class="lightbox-next" id="lightboxNext">&#10095;</button>
+    <button class="lightbox-prev" id="lightboxPrev" type="button" aria-label="Ver imagen anterior">&#10094;</button>
+    <button class="lightbox-next" id="lightboxNext" type="button" aria-label="Ver imagen siguiente">&#10095;</button>
     <div class="lightbox-actions" id="lightboxActions">
       <a href="#" class="btn btn-whatsapp" id="lightboxWA" target="_blank" rel="noopener">
         <i data-lucide="message-circle"></i> Cotizar por WhatsApp
@@ -66,6 +66,7 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#inicio">Inicio</a>
+        <a href="#paquetes">Paquetes</a>
         <a href="#disenos">Diseños</a>
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#materiales">Materiales</a>
@@ -193,6 +194,247 @@
     <div class="scroll-indicator">
       <span>Descubre más</span>
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================
+       PAQUETES Y PRECIOS
+  ============================= -->
+  <section class="packages section" id="paquetes" aria-labelledby="packagesTitle">
+    <div class="packages-orb packages-orb-left" aria-hidden="true"></div>
+    <div class="packages-orb packages-orb-right" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="section-header packages-header" data-animate="fade-up">
+        <span class="section-tag">Paquetes y precios</span>
+        <h2 class="section-title" id="packagesTitle">Elige la forma perfecta de <em>compartir tu evento</em></h2>
+        <p class="section-desc">Desde una invitación lista para enviar por WhatsApp hasta una experiencia web completamente personalizada o una pieza impresa con acabados especiales.</p>
+      </div>
+
+      <div class="service-packages">
+        <!-- Invitación digital -->
+        <article class="service-package service-package-digital" data-animate="fade-up" data-delay="0">
+          <div class="service-package-topline">
+            <span class="package-icon" aria-hidden="true"><i data-lucide="image"></i></span>
+            <span class="package-eyebrow">Para compartir al instante</span>
+          </div>
+          <h3>Invitación Digital</h3>
+          <p class="package-lead">Un diseño personalizado en imagen, ideal para enviarlo directamente por WhatsApp, Facebook o redes sociales.</p>
+
+          <div class="package-price">
+            <span>Desde</span>
+            <strong>$100</strong>
+            <small>MXN</small>
+          </div>
+
+          <ul class="package-features">
+            <li><i data-lucide="check"></i> Diseño adaptado a tu evento y temática.</li>
+            <li><i data-lucide="check"></i> Entrega en PNG, JPG o JPEG, según prefieras compartirla.</li>
+            <li><i data-lucide="check"></i> Formato optimizado para celular y redes sociales.</li>
+            <li><i data-lucide="check"></i> Lista para enviar a familiares y amistades.</li>
+          </ul>
+
+          <a class="btn btn-package" href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20cotizar%20una%20Invitaci%C3%B3n%20Digital%20de%20%24100." target="_blank" rel="noopener">
+            <i data-lucide="message-circle"></i> Cotizar invitación digital
+          </a>
+        </article>
+
+        <!-- Invitaciones web -->
+        <article class="service-package service-package-web" data-animate="fade-up" data-delay="120">
+          <div class="service-package-heading">
+            <div>
+              <div class="service-package-topline">
+                <span class="package-icon" aria-hidden="true"><i data-lucide="monitor-smartphone"></i></span>
+                <span class="package-eyebrow">Experiencias para celular</span>
+              </div>
+              <h3>Invitaciones Web</h3>
+              <p class="package-lead">Una invitación que se abre con un enlace y presenta los detalles de tu evento de forma elegante, interactiva y lista para compartir.</p>
+              <a class="web-preview-link" href="#experiencias-web"><i data-lucide="smartphone"></i> Mira cómo se ven en un teléfono <i data-lucide="arrow-down"></i></a>
+            </div>
+            <span class="popular-badge"><i data-lucide="sparkles"></i> Más solicitadas</span>
+          </div>
+
+          <div class="web-plans">
+            <div class="web-plan">
+              <div class="web-plan-title">
+                <span class="web-plan-number">01</span>
+                <h4>Sencilla</h4>
+              </div>
+              <div class="web-plan-price"><strong>$400</strong><span>MXN</span></div>
+              <p>Una página en un solo archivo <strong>index</strong>, clara y funcional, sin fotografías ni música.</p>
+              <ul>
+                <li><i data-lucide="check"></i> Información principal del evento.</li>
+                <li><i data-lucide="check"></i> Fecha, hora, ubicación y botones de contacto.</li>
+                <li><i data-lucide="check"></i> Diseño adaptable a celular.</li>
+              </ul>
+              <a class="text-package-link" href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20la%20Invitaci%C3%B3n%20Web%20Sencilla%20de%20%24400." target="_blank" rel="noopener">Cotizar sencilla <i data-lucide="arrow-up-right"></i></a>
+            </div>
+
+            <div class="web-plan web-plan-featured">
+              <span class="plan-ribbon">Recomendada</span>
+              <div class="web-plan-title">
+                <span class="web-plan-number">02</span>
+                <h4>Original</h4>
+              </div>
+              <div class="web-plan-price"><strong>$1,100</strong><span>MXN</span></div>
+              <p>Un <strong>index principal</strong> más una segunda página HTML, con una presentación más completa y personalizada.</p>
+              <ul>
+                <li><i data-lucide="check"></i> Música de fondo para ambientar el recorrido.</li>
+                <li><i data-lucide="check"></i> Hasta 3 fotografías integradas al diseño.</li>
+                <li><i data-lucide="check"></i> Dos páginas HTML con detalles del evento.</li>
+                <li><i data-lucide="check"></i> Diseño original acorde a tu temática.</li>
+              </ul>
+              <a class="text-package-link" href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20la%20Invitaci%C3%B3n%20Web%20Original%20de%20%241100." target="_blank" rel="noopener">Cotizar original <i data-lucide="arrow-up-right"></i></a>
+            </div>
+
+            <div class="web-plan web-plan-premium">
+              <div class="web-plan-title">
+                <span class="web-plan-number">03</span>
+                <h4>Premium</h4>
+              </div>
+              <div class="web-plan-price"><strong>$2,800</strong><span>MXN</span></div>
+              <p>Una experiencia digital completamente original, creada a gusto del cliente y pensada para sorprender a cada invitado.</p>
+              <ul>
+                <li><i data-lucide="check"></i> Diseño web exclusivo, personalizado desde cero.</li>
+                <li><i data-lucide="check"></i> Fotos, música, cuenta regresiva e itinerario.</li>
+                <li><i data-lucide="check"></i> Mapa, mesa de regalos, código de vestimenta y galería.</li>
+                <li><i data-lucide="check"></i> Confirmación de asistencia y extras a elegir.</li>
+              </ul>
+              <a class="text-package-link" href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20la%20Invitaci%C3%B3n%20Web%20Premium%20de%20%242800." target="_blank" rel="noopener">Cotizar premium <i data-lucide="arrow-up-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Invitaciones impresas -->
+        <article class="service-package service-package-print" data-animate="fade-up" data-delay="220">
+          <div class="service-package-topline">
+            <span class="package-icon" aria-hidden="true"><i data-lucide="printer"></i></span>
+            <span class="package-eyebrow">Detalles que se conservan</span>
+          </div>
+          <h3>Invitaciones Impresas</h3>
+          <p class="package-lead">Piezas físicas para entregar en mano, con opciones sencillas o presentaciones con sobre y portainvitación.</p>
+
+          <div class="print-prices">
+            <div>
+              <span>Sencilla · ¼ de hoja</span>
+              <strong>Desde $9</strong>
+              <small>por pieza</small>
+            </div>
+            <div>
+              <span>Sencilla · ½ hoja</span>
+              <strong>Desde $11</strong>
+              <small>por pieza</small>
+            </div>
+          </div>
+
+          <ul class="package-features">
+            <li><i data-lucide="check"></i> Modelos sencillos, con sobre o con portainvitación.</li>
+            <li><i data-lucide="check"></i> Gran variedad de tipos de papel y acabados.</li>
+            <li><i data-lucide="check"></i> El costo final cambia según modelo, medida, papel y presentación.</li>
+            <li><i data-lucide="check"></i> Cotización personalizada de acuerdo con la cantidad requerida.</li>
+          </ul>
+
+          <p class="package-note"><i data-lucide="info"></i> Los precios mostrados corresponden a invitaciones sencillas; sobres, portainvitaciones y papeles especiales se cotizan de acuerdo con el modelo elegido.</p>
+          <a class="btn btn-package btn-package-dark" href="https://wa.me/5219221224111?text=Hola%2C%20me%20interesa%20cotizar%20Invitaciones%20Impresas.%20Quiero%20conocer%20los%20modelos%20y%20tipos%20de%20papel." target="_blank" rel="noopener">
+            <i data-lucide="message-circle"></i> Cotizar invitaciones impresas
+          </a>
+        </article>
+      </div>
+
+      <div class="packages-bottom-note" data-animate="fade-up">
+        <i data-lucide="heart-handshake"></i>
+        <p>¿Tienes una idea especial? Cuéntanos tu evento y creamos una propuesta personalizada para ti.</p>
+        <a href="#contacto">Solicitar una propuesta <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ============================
+       EXPERIENCIA WEB / MOCKUPS REALES
+  ============================= -->
+  <section class="web-showcase section" id="experiencias-web" aria-labelledby="webShowcaseTitle">
+    <div class="web-showcase-orb web-showcase-orb--one" aria-hidden="true"></div>
+    <div class="web-showcase-orb web-showcase-orb--two" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="web-showcase-hero" data-animate="fade-up">
+        <div class="web-showcase-copy">
+          <span class="section-tag">Experiencia móvil real</span>
+          <h2 class="section-title" id="webShowcaseTitle">Tu evento se ve increíble <em>desde el primer toque</em></h2>
+          <p class="section-desc">Así reciben tus invitados una invitación web: un enlace elegante, diseñado para verse espectacular en el teléfono y listo para compartirse por WhatsApp.</p>
+
+          <div class="web-showcase-points" aria-label="Características de invitaciones web">
+            <span><i data-lucide="smartphone"></i> Diseño mobile-first</span>
+            <span><i data-lucide="sparkles"></i> Estilo original</span>
+            <span><i data-lucide="send"></i> Lista para compartir</span>
+          </div>
+
+          <a class="btn btn-primary web-showcase-cta" href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20cotizar%20una%20Invitaci%C3%B3n%20Web.%20Me%20gustaron%20los%20ejemplos%20en%20tel%C3%A9fono." target="_blank" rel="noopener">
+            <i data-lucide="message-circle"></i> Quiero mi invitación web
+          </a>
+        </div>
+
+        <figure class="web-promo-frame" aria-labelledby="webPromoCaption">
+          <div class="web-promo-frame__inner" data-tilt-media>
+            <img src="images/categories/promocional.jpg" alt="Colección de invitaciones web premium mostradas en teléfonos" loading="lazy" decoding="async" />
+            <div class="web-promo-frame__shine" aria-hidden="true"></div>
+            <span class="web-promo-frame__badge"><i data-lucide="sparkles"></i> Portafolio destacado</span>
+          </div>
+          <figcaption id="webPromoCaption"><span>Invitaciones Web Premium</span> Bodas, XV años, baby shower y todo tipo de evento.</figcaption>
+        </figure>
+      </div>
+
+      <div class="web-showcase-divider" aria-hidden="true"><span></span><i data-lucide="heart"></i><span></span></div>
+
+      <div class="web-showcase-grid" data-animate="fade-up" aria-label="Ejemplos de invitaciones web en teléfono">
+        <article class="web-showcase-card web-showcase-card--francisco">
+          <div class="web-showcase-card__media" data-tilt-media>
+            <img src="images/categories/boda_francisco_rosa.jpg" alt="Ejemplo de invitación web de boda azul y dorada vista en un teléfono" loading="lazy" decoding="async" />
+            <div class="web-showcase-card__glow" aria-hidden="true"></div>
+          </div>
+          <div class="web-showcase-card__meta">
+            <span>Boda elegante</span>
+            <h3>Diseño azul &amp; dorado</h3>
+          </div>
+        </article>
+
+        <article class="web-showcase-card web-showcase-card--carol">
+          <div class="web-showcase-card__media" data-tilt-media>
+            <img src="images/categories/quince_anos_carol.jpg" alt="Ejemplo de invitación web de XV años en tonos vino y dorado vista en un teléfono" loading="lazy" decoding="async" />
+            <div class="web-showcase-card__glow" aria-hidden="true"></div>
+          </div>
+          <div class="web-showcase-card__meta">
+            <span>XV Años</span>
+            <h3>Estilo vino &amp; oro</h3>
+          </div>
+        </article>
+
+        <article class="web-showcase-card web-showcase-card--deisy">
+          <div class="web-showcase-card__media" data-tilt-media>
+            <img src="images/categories/boda_deisy_miguel.jpg" alt="Ejemplo de invitación web de boda en tonos negros y dorados vista en un teléfono" loading="lazy" decoding="async" />
+            <div class="web-showcase-card__glow" aria-hidden="true"></div>
+          </div>
+          <div class="web-showcase-card__meta">
+            <span>Boda romántica</span>
+            <h3>Acabado negro &amp; dorado</h3>
+          </div>
+        </article>
+
+        <article class="web-showcase-card web-showcase-card--mateo">
+          <div class="web-showcase-card__media" data-tilt-media>
+            <img src="images/categories/baby_shower_mateo.jpg" alt="Ejemplo de invitación web de baby shower azul vista en un teléfono" loading="lazy" decoding="async" />
+            <div class="web-showcase-card__glow" aria-hidden="true"></div>
+          </div>
+          <div class="web-showcase-card__meta">
+            <span>Baby Shower</span>
+            <h3>Diseño suave &amp; moderno</h3>
+          </div>
+        </article>
+      </div>
+
+      <p class="web-showcase-note" data-animate="fade-up"><i data-lucide="mouse-pointer-click"></i> Cada invitación se adapta a la temática, los colores, los datos y la experiencia que quieras crear para tus invitados.</p>
     </div>
   </section>
 
@@ -1153,131 +1395,215 @@
   </section>
 
   <!-- ============================
-       ¿POR QUÉ ELEGIRME?
+       DIFERENCIADORES VISUALES
   ============================= -->
-  <section class="why section" id="por-que">
+  <section class="why why--visual section" id="por-que" aria-labelledby="whyTitle">
+    <div class="why-ambient why-ambient--one" aria-hidden="true"></div>
+    <div class="why-ambient why-ambient--two" aria-hidden="true"></div>
+
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
+      <div class="section-header why-visual-header" data-animate="fade-up">
         <span class="section-tag">Diferenciadores</span>
-        <h2 class="section-title">¿Por qué trabajar <em>con InvitArte?</em></h2>
+        <h2 class="section-title" id="whyTitle">Una experiencia que hace que tu invitación <em>se sienta especial</em></h2>
+        <p class="section-desc">Cada detalle está pensado para que elijas con confianza: diseño original, acompañamiento cercano y una entrega lista para sorprender.</p>
       </div>
-      <div class="why-grid">
-        <div class="why-card" data-animate="fade-up" data-delay="0">
-          <div class="why-icon">
-            <i data-lucide="palette"></i>
+
+      <div class="why-visual-timeline" aria-label="Razones para elegir InvitArte">
+        <article class="choice-card" data-animate="fade-up" data-delay="0">
+          <div class="choice-step">01</div>
+          <button class="choice-preview" type="button" data-preview-group="por-que-invitarte" data-preview-title="Diseño 100% personalizado" data-preview-src="images/eleccion/proceso_1.jpg" aria-label="Ampliar imagen: diseño 100% personalizado">
+            <img src="images/eleccion/proceso_1.jpg" alt="Diseño de invitación personalizado por InvitArte" loading="lazy" decoding="async" />
+            <span class="choice-preview-overlay"><i data-lucide="maximize-2"></i> Ver a detalle</span>
+          </button>
+          <div class="choice-body">
+            <span class="choice-kicker"><i data-lucide="palette"></i> Diseño que te representa</span>
+            <h3>100% Personalizados</h3>
+            <p>Cada invitación se crea especialmente para ti, con tus colores, fotos, estilo y la esencia de tu celebración.</p>
           </div>
-          <h3>100% Personalizados</h3>
-          <p>Cada invitación es única, creada especialmente para ti con tus colores, fotos y estilo.</p>
-        </div>
-        <div class="why-card" data-animate="fade-up" data-delay="100">
-          <div class="why-icon">
-            <i data-lucide="zap"></i>
+        </article>
+
+        <article class="choice-card" data-animate="fade-up" data-delay="120">
+          <div class="choice-step">02</div>
+          <button class="choice-preview" type="button" data-preview-group="por-que-invitarte" data-preview-title="Entrega rápida y organizada" data-preview-src="images/eleccion/proceso_2.jpg" aria-label="Ampliar imagen: entrega rápida y organizada">
+            <img src="images/eleccion/proceso_2.jpg" alt="Proceso de entrega rápida de invitaciones InvitArte" loading="lazy" decoding="async" />
+            <span class="choice-preview-overlay"><i data-lucide="maximize-2"></i> Ver a detalle</span>
+          </button>
+          <div class="choice-body">
+            <span class="choice-kicker"><i data-lucide="zap"></i> Tu tiempo importa</span>
+            <h3>Entrega Rápida</h3>
+            <p>Tu invitación queda lista en el tiempo que necesitas, con opciones de entrega desde 24 horas según tu proyecto.</p>
           </div>
-          <h3>Entrega Rápida</h3>
-          <p>Tu invitación lista en el tiempo que necesitas. Entregas desde 24 horas.</p>
-        </div>
-        <div class="why-card" data-animate="fade-up" data-delay="200">
-          <div class="why-icon">
-            <i data-lucide="heart-handshake"></i>
+        </article>
+
+        <article class="choice-card" data-animate="fade-up" data-delay="240">
+          <div class="choice-step">03</div>
+          <button class="choice-preview" type="button" data-preview-group="por-que-invitarte" data-preview-title="Atención personalizada durante todo el proceso" data-preview-src="images/eleccion/proceso_3.jpg" aria-label="Ampliar imagen: atención personalizada">
+            <img src="images/eleccion/proceso_3.jpg" alt="Atención personalizada para crear invitaciones InvitArte" loading="lazy" decoding="async" />
+            <span class="choice-preview-overlay"><i data-lucide="maximize-2"></i> Ver a detalle</span>
+          </button>
+          <div class="choice-body">
+            <span class="choice-kicker"><i data-lucide="heart-handshake"></i> Acompañamiento cercano</span>
+            <h3>Atención Personalizada</h3>
+            <p>Te acompaño en cada paso: desde tu primera idea hasta la entrega final, cuidando cada detalle contigo.</p>
           </div>
-          <h3>Atención Personalizada</h3>
-          <p>Estoy contigo en cada paso del proceso, desde el diseño hasta la entrega.</p>
-        </div>
-        <div class="why-card" data-animate="fade-up" data-delay="300">
-          <div class="why-icon">
-            <i data-lucide="smartphone"></i>
+        </article>
+
+        <article class="choice-card" data-animate="fade-up" data-delay="360">
+          <div class="choice-step">04</div>
+          <button class="choice-preview" type="button" data-preview-group="por-que-invitarte" data-preview-title="Lista para compartir en todos tus dispositivos" data-preview-src="images/eleccion/proceso_4.jpg" aria-label="Ampliar imagen: invitación lista para compartir">
+            <img src="images/eleccion/proceso_4.jpg" alt="Invitación digital InvitArte lista para compartir en celular" loading="lazy" decoding="async" />
+            <span class="choice-preview-overlay"><i data-lucide="maximize-2"></i> Ver a detalle</span>
+          </button>
+          <div class="choice-body">
+            <span class="choice-kicker"><i data-lucide="smartphone"></i> Comparte sin límites</span>
+            <h3>Compatible con Todo</h3>
+            <p>Comparte fácilmente por WhatsApp, Instagram y redes sociales. Tus invitados la verán perfecta desde cualquier dispositivo.</p>
           </div>
-          <h3>Compatible con Todo</h3>
-          <p>Comparte fácilmente por WhatsApp, Instagram y todas las redes sociales.</p>
-        </div>
+        </article>
       </div>
+
+      <div class="why-assurance" data-animate="fade-up">
+        <div class="why-assurance-copy">
+          <span class="why-assurance-icon"><i data-lucide="sparkles"></i></span>
+          <p><strong>No es una plantilla más.</strong> Es una invitación creada para que tus invitados recuerden tu evento desde el primer vistazo.</p>
+        </div>
+        <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20cotizar%20una%20invitaci%C3%B3n%20personalizada%20con%20InvitArte." class="btn why-assurance-btn" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i> Quiero mi invitación
+        </a>
+      </div>
+
+      <p class="why-visual-instruction" data-animate="fade-up"><i data-lucide="mouse-pointer-click"></i> Presiona cada imagen para verla a pantalla completa y conocer por qué InvitArte es diferente.</p>
     </div>
   </section>
-
   <!-- ============================
-       MATERIALES DE IMPRESIÓN 🖨️
+       MATERIALES DE IMPRESIÓN
   ============================= -->
   <section class="materiales section" id="materiales">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-tag">Acabados físicos</span>
         <h2 class="section-title">Materiales de <em>impresión</em></h2>
-        <p class="section-desc">Trabajamos con papeles de la más alta calidad para que tu invitación sea una experiencia al tacto</p>
+        <p class="section-desc">Conoce los papeles y portainvitaciones disponibles. Toca o haz clic en cada imagen para ver el acabado a detalle.</p>
       </div>
 
       <!-- Papeles para invitaciones -->
       <div class="materiales-subsection" data-animate="fade-up">
-        <h3 class="materiales-subtitle">
-          <i data-lucide="file-text"></i> Papeles para Invitaciones
-        </h3>
-        <div class="materiales-grid">
-          <div class="material-card">
-            <div class="material-icon">📄</div>
-            <h4>Opalina Gruesa</h4>
-            <p>Papel de alto gramaje con acabado liso y elegante. Ideal para invitaciones formales como bodas y XV años. Alta resistencia y excelente impresión.</p>
-            <span class="material-badge">Recomendado para eventos formales</span>
-          </div>
-          <div class="material-card">
-            <div class="material-icon">📃</div>
-            <h4>Opalina Delgada</h4>
-            <p>Versión más ligera de la opalina, perfecta para invitaciones que requieren dobleces o sobres. Mismo acabado profesional en menor gramaje.</p>
-            <span class="material-badge">Ideal para sets completos</span>
-          </div>
-          <div class="material-card">
-            <div class="material-icon">🖼️</div>
-            <h4>Papel Fotográfico Grueso</h4>
-            <p>Acabado brillante o mate con calidad fotográfica. Colores vibrantes y detalles nítidos. Perfecto para invitaciones con muchas fotos o diseños a todo color.</p>
-            <span class="material-badge">Máxima calidad de imagen</span>
-          </div>
+        <div class="materiales-subsection-heading">
+          <h3 class="materiales-subtitle"><i data-lucide="file-text"></i> Papeles para Invitaciones</h3>
+          <span class="materiales-hint"><i data-lucide="expand"></i> Presiona una imagen para ampliarla</span>
+        </div>
+
+        <div class="materiales-grid materiales-grid--papers">
+          <article class="material-card material-card--photo">
+            <button class="material-preview" type="button" data-preview-group="papeles-invitacion" data-preview-title="Opalina gruesa" data-preview-src="images/papeles/opalina_gruesa.jpg" aria-label="Ampliar imagen de opalina gruesa">
+              <img src="images/papeles/opalina_gruesa.jpg" alt="Muestra de papel opalina gruesa para invitaciones" loading="lazy" decoding="async" />
+              <span class="material-preview-overlay"><i data-lucide="zoom-in"></i> Ver acabado</span>
+            </button>
+            <div class="material-card-content">
+              <span class="material-kicker">Alta resistencia</span>
+              <h4>Opalina Gruesa</h4>
+              <p>Papel de alto gramaje con acabado liso y elegante. Ideal para bodas, XV años y eventos formales.</p>
+              <span class="material-badge">Recomendado para eventos formales</span>
+            </div>
+          </article>
+
+          <article class="material-card material-card--photo">
+            <button class="material-preview" type="button" data-preview-group="papeles-invitacion" data-preview-title="Opalina delgada" data-preview-src="images/papeles/opalina_delgada.jpg" aria-label="Ampliar imagen de opalina delgada">
+              <img src="images/papeles/opalina_delgada.jpg" alt="Muestra de papel opalina delgada para invitaciones" loading="lazy" decoding="async" />
+              <span class="material-preview-overlay"><i data-lucide="zoom-in"></i> Ver acabado</span>
+            </button>
+            <div class="material-card-content">
+              <span class="material-kicker">Versátil y ligero</span>
+              <h4>Opalina Delgada</h4>
+              <p>Una opción ligera y profesional, perfecta para invitaciones que requieren dobleces o sobres.</p>
+              <span class="material-badge">Ideal para sets completos</span>
+            </div>
+          </article>
+
+          <article class="material-card material-card--photo">
+            <button class="material-preview" type="button" data-preview-group="papeles-invitacion" data-preview-title="Papel fotográfico" data-preview-src="images/papeles/papel_fotografico.jpg" aria-label="Ampliar imagen de papel fotográfico">
+              <img src="images/papeles/papel_fotografico.jpg" alt="Muestra de papel fotográfico para invitaciones" loading="lazy" decoding="async" />
+              <span class="material-preview-overlay"><i data-lucide="zoom-in"></i> Ver acabado</span>
+            </button>
+            <div class="material-card-content">
+              <span class="material-kicker">Color intenso</span>
+              <h4>Papel Fotográfico</h4>
+              <p>Acabado brillante o mate de gran definición. Ideal para diseños a color, fotografías y detalles nítidos.</p>
+              <span class="material-badge">Máxima calidad de imagen</span>
+            </div>
+          </article>
         </div>
       </div>
 
       <!-- Portainvitaciones -->
       <div class="materiales-subsection" data-animate="fade-up">
-        <h3 class="materiales-subtitle">
-          <i data-lucide="folder-open"></i> Portainvitaciones
-        </h3>
-        <div class="materiales-grid">
-          <div class="material-card material-card-colored">
-            <div class="material-icon">🎨</div>
-            <h4>Cartulina Lino Texturizada</h4>
-            <p>Textura elegante tipo tela con acabado de lino. Agrega un toque sofisticado y artesanal a tus invitaciones.</p>
-            <div class="material-colors">
-              <span class="color-dot" style="background:#1a3a5c" title="Azul"></span>
-              <span class="color-dot" style="background:#2d5a27" title="Verde"></span>
-              <span class="color-dot" style="background:#6b1a2a" title="Vino"></span>
-              <span class="color-label">Colores: Azul, Verde, Vino</span>
+        <div class="materiales-subsection-heading">
+          <h3 class="materiales-subtitle"><i data-lucide="folder-open"></i> Portainvitaciones</h3>
+          <span class="materiales-hint"><i data-lucide="swatch-book"></i> Elige el acabado que mejor combine con tu evento</span>
+        </div>
+
+        <div class="materiales-grid materiales-grid--holders">
+          <article class="material-card material-card--photo material-card--lino">
+            <div class="material-card-content material-card-content--top">
+              <span class="material-kicker">Textura tipo tela</span>
+              <h4>Cartulina Lino Texturizada</h4>
+              <p>Un acabado elegante y artesanal que aporta personalidad a tu portainvitación.</p>
             </div>
-          </div>
-          <div class="material-card material-card-colored">
-            <div class="material-icon">✨</div>
-            <h4>Cartulina Aperlada</h4>
-            <p>Acabado con brillo perlado sutil que refleja la luz delicadamente. Elegante y moderna para eventos contemporáneos.</p>
-            <div class="material-colors">
-              <span class="color-dot" style="background:linear-gradient(135deg, #fff5f5, #f0c0c0)" title="Rosa perlado"></span>
-              <span class="color-dot" style="background:linear-gradient(135deg, #f5f5ff, #c0c0f0)" title="Azul perlado"></span>
-              <span class="color-dot" style="background:linear-gradient(135deg, #fffff0, #f0e0c0)" title="Crema perlado"></span>
-              <span class="color-label">Varios tonos disponibles</span>
+            <div class="material-variants" aria-label="Colores de cartulina lino texturizada">
+              <button class="material-variant material-variant--verde" type="button" data-preview-group="lino-texturizada" data-preview-title="Cartulina lino texturizada — verde" data-preview-src="images/papeles/lino_texturizada_verde.jpg" aria-label="Ampliar cartulina lino texturizada color verde">
+                <img src="images/papeles/lino_texturizada_verde.jpg" alt="Cartulina lino texturizada verde" loading="lazy" decoding="async" />
+                <span><i data-lucide="zoom-in"></i> Verde</span>
+              </button>
+              <button class="material-variant material-variant--azul" type="button" data-preview-group="lino-texturizada" data-preview-title="Cartulina lino texturizada — azul" data-preview-src="images/papeles/lino_texturizada_azul.jpg" aria-label="Ampliar cartulina lino texturizada color azul">
+                <img src="images/papeles/lino_texturizada_azul.jpg" alt="Cartulina lino texturizada azul" loading="lazy" decoding="async" />
+                <span><i data-lucide="zoom-in"></i> Azul</span>
+              </button>
+              <button class="material-variant material-variant--vino" type="button" data-preview-group="lino-texturizada" data-preview-title="Cartulina lino texturizada — vino" data-preview-src="images/papeles/lino_texturizada_vino.jpg" aria-label="Ampliar cartulina lino texturizada color vino">
+                <img src="images/papeles/lino_texturizada_vino.jpg" alt="Cartulina lino texturizada vino" loading="lazy" decoding="async" />
+                <span><i data-lucide="zoom-in"></i> Vino</span>
+              </button>
             </div>
-          </div>
-          <div class="material-card material-card-colored">
-            <div class="material-icon">💎</div>
-            <h4>Cartulina Nacarada</h4>
-            <p>Brillo nacarado intenso con efecto tornasol. El acabado más lujoso para invitaciones que buscan deslumbrar.</p>
-            <div class="material-colors">
-              <span class="color-dot" style="background:linear-gradient(135deg, #fff0f5, #ffc0cb)" title="Rosa nacarado"></span>
-              <span class="color-dot" style="background:linear-gradient(135deg, #f0f5ff, #c0d0ff)" title="Azul nacarado"></span>
-              <span class="color-dot" style="background:linear-gradient(135deg, #fffff5, #ffe0c0)" title="Dorado nacarado"></span>
-              <span class="color-label">Varios tonos disponibles</span>
+            <div class="material-card-content material-card-content--bottom">
+              <div class="material-colors" aria-label="Colores disponibles">
+                <span class="color-dot" style="background:#2d5a27" title="Verde"></span>
+                <span class="color-dot" style="background:#1a3a5c" title="Azul"></span>
+                <span class="color-dot" style="background:#6b1a2a" title="Vino"></span>
+                <span class="color-label">Tres colores disponibles</span>
+              </div>
             </div>
-          </div>
+          </article>
+
+          <article class="material-card material-card--photo">
+            <button class="material-preview" type="button" data-preview-group="portainvitaciones" data-preview-title="Cartulina aperlada" data-preview-src="images/papeles/opalina_aperlada.jpg" aria-label="Ampliar imagen de cartulina aperlada">
+              <img src="images/papeles/opalina_aperlada.jpg" alt="Muestra de cartulina aperlada para portainvitaciones" loading="lazy" decoding="async" />
+              <span class="material-preview-overlay"><i data-lucide="zoom-in"></i> Ver acabado</span>
+            </button>
+            <div class="material-card-content">
+              <span class="material-kicker">Brillo suave</span>
+              <h4>Cartulina Aperlada</h4>
+              <p>Un brillo perlado sutil que refleja la luz con elegancia. Excelente para eventos modernos y románticos.</p>
+              <div class="material-colors"><span class="color-label">Varios tonos disponibles</span></div>
+            </div>
+          </article>
+
+          <article class="material-card material-card--photo">
+            <button class="material-preview" type="button" data-preview-group="portainvitaciones" data-preview-title="Cartulina nacarada" data-preview-src="images/papeles/opalina_nacarada.jpg" aria-label="Ampliar imagen de cartulina nacarada">
+              <img src="images/papeles/opalina_nacarada.jpg" alt="Muestra de cartulina nacarada para portainvitaciones" loading="lazy" decoding="async" />
+              <span class="material-preview-overlay"><i data-lucide="zoom-in"></i> Ver acabado</span>
+            </button>
+            <div class="material-card-content">
+              <span class="material-kicker">Efecto lujoso</span>
+              <h4>Cartulina Nacarada</h4>
+              <p>Un brillo nacarado con efecto tornasol para diseños que buscan una presencia más especial.</p>
+              <div class="material-colors"><span class="color-label">Varios tonos disponibles</span></div>
+            </div>
+          </article>
         </div>
       </div>
 
       <div class="materiales-cta" data-animate="fade-up">
         <p>¿No sabes qué material elegir? <strong>Te asesoro sin costo</strong> para encontrar la mejor opción para tu evento.</p>
-        <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20información%20sobre%20materiales%20de%20impresión" 
-           class="btn btn-outline" target="_blank" rel="noopener">
+        <a href="https://wa.me/5219221224111?text=Hola%2C%20quiero%20información%20sobre%20materiales%20de%20impresión" class="btn btn-outline" target="_blank" rel="noopener">
           <i data-lucide="message-circle"></i> Consultar materiales
         </a>
       </div>
@@ -1292,36 +1618,64 @@
       <div class="section-header" data-animate="fade-up">
         <span class="section-tag">Proceso claro</span>
         <h2 class="section-title">¿Cómo <em>funciona?</em></h2>
+        <p class="section-desc">Un proceso sencillo, ordenado y personalizado desde tu primera idea hasta la entrega final.</p>
       </div>
-      <div class="process-steps">
-        <div class="process-step" data-animate="fade-up" data-delay="0">
-          <div class="step-number">01</div>
-          <div class="step-icon"><i data-lucide="message-circle"></i></div>
-          <h3>Me contactas</h3>
-          <p>Escríbeme por WhatsApp y cuéntame tu idea, el evento y la fecha.</p>
-        </div>
-        <div class="process-arrow" aria-hidden="true">→</div>
-        <div class="process-step" data-animate="fade-up" data-delay="150">
-          <div class="step-number">02</div>
-          <div class="step-icon"><i data-lucide="file-text"></i></div>
-          <h3>Me envías tus datos</h3>
-          <p>Comparte la información del evento, fotos y tus preferencias de diseño.</p>
-        </div>
-        <div class="process-arrow" aria-hidden="true">→</div>
-        <div class="process-step" data-animate="fade-up" data-delay="300">
-          <div class="step-number">03</div>
-          <div class="step-icon"><i data-lucide="pencil-ruler"></i></div>
-          <h3>Diseño tu invitación</h3>
-          <p>Creo tu diseño personalizado y te lo muestro para ajustes y cambios.</p>
-        </div>
-        <div class="process-arrow" aria-hidden="true">→</div>
-        <div class="process-step" data-animate="fade-up" data-delay="450">
-          <div class="step-number">04</div>
-          <div class="step-icon"><i data-lucide="send"></i></div>
-          <h3>¡Lista para compartir!</h3>
-          <p>Recibes tu invitación digital lista para enviar a todos tus invitados.</p>
-        </div>
+
+      <div class="process-timeline" aria-label="Proceso para crear tu invitación">
+        <article class="process-step process-step--visual" data-animate="fade-up" data-delay="0">
+          <div class="process-step-number">01</div>
+          <button class="process-preview" type="button" data-preview-group="proceso-invitacion" data-preview-title="Paso 1 — Me contactas" data-preview-src="images/procesos/proceso_1.jpg" aria-label="Ampliar imagen del paso 1, Me contactas">
+            <img src="images/procesos/proceso_1.jpg" alt="Paso 1 del proceso: contacto por WhatsApp" loading="lazy" decoding="async" />
+            <span class="process-preview-overlay"><i data-lucide="maximize-2"></i> Ampliar</span>
+          </button>
+          <div class="process-content">
+            <div class="step-icon"><i data-lucide="message-circle"></i></div>
+            <h3>Me contactas</h3>
+            <p>Escríbeme por WhatsApp y cuéntame tu idea, el evento y la fecha.</p>
+          </div>
+        </article>
+
+        <article class="process-step process-step--visual" data-animate="fade-up" data-delay="120">
+          <div class="process-step-number">02</div>
+          <button class="process-preview" type="button" data-preview-group="proceso-invitacion" data-preview-title="Paso 2 — Me envías tus datos" data-preview-src="images/procesos/proceso_2.jpg" aria-label="Ampliar imagen del paso 2, Me envías tus datos">
+            <img src="images/procesos/proceso_2.jpg" alt="Paso 2 del proceso: envío de datos y preferencias" loading="lazy" decoding="async" />
+            <span class="process-preview-overlay"><i data-lucide="maximize-2"></i> Ampliar</span>
+          </button>
+          <div class="process-content">
+            <div class="step-icon"><i data-lucide="file-text"></i></div>
+            <h3>Me envías tus datos</h3>
+            <p>Comparte la información del evento, fotos y tus preferencias de diseño.</p>
+          </div>
+        </article>
+
+        <article class="process-step process-step--visual" data-animate="fade-up" data-delay="240">
+          <div class="process-step-number">03</div>
+          <button class="process-preview" type="button" data-preview-group="proceso-invitacion" data-preview-title="Paso 3 — Diseño tu invitación" data-preview-src="images/procesos/proceso_3.jpg" aria-label="Ampliar imagen del paso 3, Diseño tu invitación">
+            <img src="images/procesos/proceso_3.jpg" alt="Paso 3 del proceso: diseño y ajustes de la invitación" loading="lazy" decoding="async" />
+            <span class="process-preview-overlay"><i data-lucide="maximize-2"></i> Ampliar</span>
+          </button>
+          <div class="process-content">
+            <div class="step-icon"><i data-lucide="pencil-ruler"></i></div>
+            <h3>Diseño tu invitación</h3>
+            <p>Creo tu diseño personalizado y te lo muestro para ajustes y cambios.</p>
+          </div>
+        </article>
+
+        <article class="process-step process-step--visual" data-animate="fade-up" data-delay="360">
+          <div class="process-step-number">04</div>
+          <button class="process-preview" type="button" data-preview-group="proceso-invitacion" data-preview-title="Paso 4 — Lista para compartir" data-preview-src="images/procesos/proceso_4.jpg" aria-label="Ampliar imagen del paso 4, Lista para compartir">
+            <img src="images/procesos/proceso_4.jpg" alt="Paso 4 del proceso: invitación lista para compartir" loading="lazy" decoding="async" />
+            <span class="process-preview-overlay"><i data-lucide="maximize-2"></i> Ampliar</span>
+          </button>
+          <div class="process-content">
+            <div class="step-icon"><i data-lucide="send"></i></div>
+            <h3>¡Lista para compartir!</h3>
+            <p>Recibes tu invitación digital lista para enviar a todos tus invitados.</p>
+          </div>
+        </article>
       </div>
+
+      <p class="process-instruction" data-animate="fade-up"><i data-lucide="mouse-pointer-click"></i> Presiona cada imagen para verla a pantalla completa y conocer el proceso.</p>
     </div>
   </section>
 
@@ -1489,6 +1843,8 @@
         <div class="footer-links">
           <h4>Navegación</h4>
           <a href="#inicio"><i data-lucide="chevron-right"></i>Inicio</a>
+          <a href="#paquetes"><i data-lucide="chevron-right"></i>Paquetes</a>
+          <a href="#experiencias-web"><i data-lucide="chevron-right"></i>Invitaciones Web</a>
           <a href="#disenos"><i data-lucide="chevron-right"></i>Diseños</a>
           <a href="#en-vivo"><i data-lucide="chevron-right"></i>En vivo</a>
           <a href="#como-funciona"><i data-lucide="chevron-right"></i>Cómo funciona</a>

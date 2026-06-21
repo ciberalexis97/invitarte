@@ -65,111 +65,144 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================
      3. LIGHTBOX / VISOR DE IMÁGENES
      ========================================== */
-  const lightbox      = document.getElementById('lightbox');
-  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightbox        = document.getElementById('lightbox');
+  const lightboxImg     = document.getElementById('lightboxImg');
   const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxPrev  = document.getElementById('lightboxPrev');
-  const lightboxNext  = document.getElementById('lightboxNext');
-  const lightboxWA    = document.getElementById('lightboxWA');
+  const lightboxClose   = document.getElementById('lightboxClose');
+  const lightboxPrev    = document.getElementById('lightboxPrev');
+  const lightboxNext    = document.getElementById('lightboxNext');
+  const lightboxWA      = document.getElementById('lightboxWA');
+  const lightboxActions = document.getElementById('lightboxActions');
 
-  let currentGalleryImages = [];
+  let currentLightboxItems = [];
   let currentImageIndex = 0;
+  let lightboxMode = 'gallery';
+  let lastFocusedElement = null;
+  let lightboxTouchStartX = 0;
 
-  function openLightbox(imgSrc, caption, category, designName) {
-    lightboxImg.src = imgSrc;
-    lightboxCaption.textContent = caption;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Configurar el botón de WhatsApp con la información de la imagen
+  const buildGalleryWhatsAppLink = (item) => {
     const waText = encodeURIComponent(
-      `¡Hola! 👋 Me interesa este diseño:\n\n` +
-      `🎨 *${designName}*\n` +
-      `📂 *Categoría:* ${category}\n\n` +
+      `¡Hola! 👋 Me interesa este diseño:
+
+` +
+      `🎨 *${item.designName || item.caption}*
+` +
+      `📂 *Categoría:* ${item.category || 'Portafolio'}
+
+` +
       `_Enviado desde el portafolio de InvitArte_`
     );
-    lightboxWA.href = `https://wa.me/5219221224111?text=${waText}`;
+    return `https://wa.me/5219221224111?text=${waText}`;
+  };
 
-    // Buscar todas las imágenes visibles en la galería para navegación
-    updateCurrentGallery();
-  }
+  const updateLightboxControls = () => {
+    const hasMultiple = currentLightboxItems.length > 1;
+    if (lightboxPrev) lightboxPrev.hidden = !hasMultiple;
+    if (lightboxNext) lightboxNext.hidden = !hasMultiple;
+    if (lightboxActions) lightboxActions.hidden = lightboxMode !== 'gallery';
+  };
 
-  function updateCurrentGallery() {
-    const visibleCards = document.querySelectorAll('.gallery-card[style*="display:"]:not([style*="display: none"]), .gallery-card:not([style*="display: none"])');
-    // Si no hay filtros activos, tomar todas las cards visibles
+  const renderLightboxItem = (item) => {
+    if (!item || !lightboxImg) return;
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt || item.caption || '';
+    lightboxCaption.textContent = item.caption || '';
+
+    if (lightboxMode === 'gallery' && lightboxWA) {
+      lightboxWA.href = buildGalleryWhatsAppLink(item);
+    }
+
+    updateLightboxControls();
+  };
+
+  const showLightbox = (items, index = 0, mode = 'gallery') => {
+    if (!lightbox || !items?.length) return;
+
+    currentLightboxItems = items;
+    currentImageIndex = Math.max(0, Math.min(index, items.length - 1));
+    lightboxMode = mode;
+    lastFocusedElement = document.activeElement;
+
+    renderLightboxItem(currentLightboxItems[currentImageIndex]);
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lightboxClose?.focus();
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox?.classList.contains('active')) return;
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocusedElement?.focus?.();
+  };
+
+  const updateCurrentGallery = () => {
     const allVisible = Array.from(document.querySelectorAll('.gallery-card')).filter(card => {
       return card.style.display !== 'none' && card.offsetParent !== null;
     });
-    
-    currentGalleryImages = allVisible.map(card => {
+
+    return allVisible.map(card => {
       const img = card.querySelector('img');
       const title = card.querySelector('h4')?.textContent || '';
       const cat = card.querySelector('.gallery-cat')?.textContent || '';
       return {
         src: img?.src || '',
+        alt: img?.alt || title,
         caption: title,
         category: cat,
-        designName: title,
-        card: card
+        designName: title
       };
     }).filter(item => item.src);
+  };
 
-    currentImageIndex = currentGalleryImages.findIndex(item => item.src === lightboxImg.src);
-    if (currentImageIndex === -1) currentImageIndex = 0;
-  }
+  const openGalleryLightbox = (imgSrc, title, category) => {
+    const items = updateCurrentGallery();
+    const itemIndex = Math.max(0, items.findIndex(item => item.src === imgSrc));
+    showLightbox(items, itemIndex, 'gallery');
+  };
 
-  function navigateLightbox(direction) {
-    if (currentGalleryImages.length === 0) return;
-    currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
-    const item = currentGalleryImages[currentImageIndex];
-    lightboxImg.src = item.src;
-    lightboxCaption.textContent = item.caption;
-    
-    const waText = encodeURIComponent(
-      `¡Hola! 👋 Me interesa este diseño:\n\n` +
-      `🎨 *${item.designName}*\n` +
-      `📂 *Categoría:* ${item.category}\n\n` +
-      `_Enviado desde el portafolio de InvitArte_`
-    );
-    lightboxWA.href = `https://wa.me/5219221224111?text=${waText}`;
-  }
+  const navigateLightbox = (direction) => {
+    if (currentLightboxItems.length < 2) return;
+    currentImageIndex = (currentImageIndex + direction + currentLightboxItems.length) % currentLightboxItems.length;
+    renderLightboxItem(currentLightboxItems[currentImageIndex]);
+  };
 
-  lightboxClose?.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
+  lightboxClose?.addEventListener('click', closeLightbox);
+
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
   });
 
-  lightbox?.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-
-  lightboxPrev?.addEventListener('click', (e) => {
-    e.stopPropagation();
+  lightboxPrev?.addEventListener('click', (event) => {
+    event.stopPropagation();
     navigateLightbox(-1);
   });
 
-  lightboxNext?.addEventListener('click', (e) => {
-    e.stopPropagation();
+  lightboxNext?.addEventListener('click', (event) => {
+    event.stopPropagation();
     navigateLightbox(1);
   });
 
-  // Navegación con teclado
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'ArrowLeft') navigateLightbox(-1);
-    if (e.key === 'ArrowRight') navigateLightbox(1);
-    if (e.key === 'Escape') {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+  lightboxImg?.addEventListener('touchstart', event => {
+    lightboxTouchStartX = event.touches[0].clientX;
+  }, { passive: true });
+
+  lightboxImg?.addEventListener('touchend', event => {
+    const distance = lightboxTouchStartX - event.changedTouches[0].clientX;
+    if (Math.abs(distance) > 45) navigateLightbox(distance > 0 ? 1 : -1);
+  }, { passive: true });
+
+  document.addEventListener('keydown', event => {
+    if (!lightbox?.classList.contains('active')) return;
+    if (event.key === 'ArrowLeft') navigateLightbox(-1);
+    if (event.key === 'ArrowRight') navigateLightbox(1);
+    if (event.key === 'Escape') closeLightbox();
   });
 
   /* ==========================================
-     4. GALLERY CARD — click para abrir lightbox
+     4. GALERÍA, MATERIALES Y PROCESO — vistas ampliadas
      ========================================== */
   const galleryCards = document.querySelectorAll('.gallery-card');
 
@@ -179,36 +212,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = card.querySelector('h4')?.textContent || '';
     const category = card.querySelector('.gallery-cat')?.textContent || '';
 
-    // Click en la imagen abre el lightbox
-    imgWrap?.addEventListener('click', (e) => {
-      // Si el clic fue en el overlay de WhatsApp, no abrir lightbox
-      if (e.target.closest('.gallery-overlay-wa')) {
-        // Abrir WhatsApp directamente
+    imgWrap?.addEventListener('click', event => {
+      if (event.target.closest('.gallery-overlay-wa')) {
         const waText = encodeURIComponent(
-          `¡Hola! 👋 Me interesa este diseño:\n\n` +
-          `🎨 *${title}*\n` +
-          `📂 *Categoría:* ${category}\n\n` +
+          `¡Hola! 👋 Me interesa este diseño:
+
+` +
+          `🎨 *${title}*
+` +
+          `📂 *Categoría:* ${category}
+
+` +
           `_Enviado desde el portafolio de InvitArte_`
         );
-        window.open(`https://wa.me/5219221224111?text=${waText}`, '_blank');
-        e.stopPropagation();
+        window.open(`https://wa.me/5219221224111?text=${waText}`, '_blank', 'noopener');
+        event.stopPropagation();
         return;
       }
-      
-      if (img?.src) {
-        updateCurrentGallery();
-        openLightbox(img.src, title, category, title);
-      }
+
+      if (img?.src) openGalleryLightbox(img.src, title, category);
     });
 
-    // El overlay de "Ver diseño" también abre lightbox
     const verBtn = imgWrap?.querySelector('.gallery-overlay span:first-child');
-    verBtn?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (img?.src) {
-        updateCurrentGallery();
-        openLightbox(img.src, title, category, title);
-      }
+    verBtn?.addEventListener('click', event => {
+      event.stopPropagation();
+      if (img?.src) openGalleryLightbox(img.src, title, category);
+    });
+  });
+
+  const previewTriggers = Array.from(document.querySelectorAll('[data-preview-src][data-preview-group]'));
+  const previewGroups = new Map();
+
+  previewTriggers.forEach(trigger => {
+    const group = trigger.dataset.previewGroup;
+    const image = trigger.querySelector('img');
+    const item = {
+      src: trigger.dataset.previewSrc || image?.src || '',
+      alt: image?.alt || trigger.dataset.previewTitle || '',
+      caption: trigger.dataset.previewTitle || image?.alt || ''
+    };
+
+    if (!item.src) return;
+    if (!previewGroups.has(group)) previewGroups.set(group, []);
+    previewGroups.get(group).push(item);
+  });
+
+  previewTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const group = trigger.dataset.previewGroup;
+      const items = previewGroups.get(group) || [];
+      const src = trigger.dataset.previewSrc || trigger.querySelector('img')?.src || '';
+      const index = Math.max(0, items.findIndex(item => item.src === src));
+      showLightbox(items, index, 'preview');
     });
   });
 
@@ -518,3 +573,35 @@ document.addEventListener('click', (event) => {
     s.style.opacity = '';
   });
 });
+
+
+/* ==========================================
+   12. EXPERIENCIA WEB — inclinación sutil en escritorio
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (prefersReducedMotion || !supportsFinePointer) return;
+
+  document.querySelectorAll('[data-tilt-media]').forEach(media => {
+    const setTilt = (event) => {
+      const rect = media.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const rotateY = (x - .5) * 7;
+      const rotateX = (y - .5) * -7;
+      media.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+      media.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
+    };
+
+    const resetTilt = () => {
+      media.style.setProperty('--tilt-x', '0deg');
+      media.style.setProperty('--tilt-y', '0deg');
+    };
+
+    media.addEventListener('pointermove', setTilt, { passive: true });
+    media.addEventListener('pointerleave', resetTilt, { passive: true });
+  });
+});
+
